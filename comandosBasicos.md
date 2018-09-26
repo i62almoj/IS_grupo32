@@ -25,3 +25,19 @@ de coodigo. Fundamentalmente permite:*
 ##### Listado de la configuración:
 `git config --list``
 
+## Comandos básicos 1
+
+##### Iniciar repositorio en un directorio:
+`git init`
+
+##### Agregar cambios al area de staging :
+`git add`
+
+##### Validar cambios en el repositorio:
+`git commit -m " Mensaje "`
+
+##### Hacer los dos pasos anteriores en uno:
+`git commit -am " Mensaje "`
+
+##### Historial de commits:
+`git log`
