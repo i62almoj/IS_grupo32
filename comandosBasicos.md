@@ -106,3 +106,18 @@ de coodigo. Fundamentalmente permite:*
 `git log --oneline -3
 
 ###### Para mas opciones consultar documentacion de git.
+
+## Comandos basicos 6
+
+##### Deshacer multiples cambios en el repositorio
+`git reset --soft <id_commit>`
+`git reset --mixed <id_commit>`
+`git reset -- hard < id_commit>`
+
+##### Listar archivos que git no controla
+`git clean -n`
+
+##### Eliminar archivos que git no controla
+`git clean -f`
+
+###### Ignora archivos en el repositorio .gitignore
