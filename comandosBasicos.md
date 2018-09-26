@@ -59,5 +59,18 @@ de coodigo. Fundamentalmente permite:*
 ##### Ver cambios en el directorio:
 `git status`
 
+## Ver Comandos Basicos 3
 
+##### ver diferencia entre ficheros en el directorio y el repositorio de git
+`git diff`
 
+##### ver diferencia entre los ficheros en el staging y el repositorio
+`gis diff --staged`
+
+##### Eliminar archivos
+`git rm archivo`
+`git commit -m "mensaje"
+
+##### mover o renombrar archivos
+`git mv antiguo nuevo`
+`git commit -m "mensaje"`
