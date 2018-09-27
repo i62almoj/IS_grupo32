@@ -25,6 +25,8 @@ de coodigo. Fundamentalmente permite:*
 ##### Listado de la configuración:
 `git config --list`
 
+![EstadosGit](imagen/estadosGit.png)
+
 ## Comandos básicos 1
 
 ##### Iniciar repositorio en un directorio:
