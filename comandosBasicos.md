@@ -23,7 +23,7 @@ de coodigo. Fundamentalmente permite:*
 `git config -- global color .ui true`
 
 ##### Listado de la configuración:
-`git config --list``
+`git config --list`
 
 ## Comandos básicos 1
 
@@ -84,15 +84,15 @@ de coodigo. Fundamentalmente permite:*
 `git reset HEAD nombre_fichero`
 
 ##### Complementar ultimo commit
-`git commit --amend -m "mensaje
+`git commit --amend -m "mensaje`
 
 ##### Recuperar version de un fichero de commit antiguo
 `git checkout <id_commit> -- nombre_archivo'
 
 ##### Revertir un commit
-`git revert <id_commit>
+`git revert <id_commit>`
 
-##Comandos Basicos 5
+## Comandos Basicos 5
 
 ##### Listar el contenido del repositorio de git
 `git ls-tree master`
@@ -100,10 +100,10 @@ de coodigo. Fundamentalmente permite:*
 `git ls-tree master~3`
 
 ##### Log en una linea
-`git log --oneline
+`git log --oneline`
 
 ##### Log con los tres ultimos commit en una linea
-`git log --oneline -3
+`git log --oneline -3`
 
 ###### Para mas opciones consultar documentacion de git.
 
