@@ -70,7 +70,7 @@ de código. Fundamentalmente permite:*
 ##### Eliminar archivos:
 `git rm archivo`
 
-`git commit -m "mensaje"
+`git commit -m "mensaje"`
 
 ##### Mover o renombrar archivos:
 `git mv antiguo nuevo`
@@ -89,7 +89,7 @@ de código. Fundamentalmente permite:*
 `git commit --amend -m "mensaje`
 
 ##### Recuperar versión de un fichero de commit antiguo:
-`git checkout <id_commit> -- nombre_archivo'
+`git checkout <id_commit> -- nombre_archivo`
 
 ##### Revertir un commit:
 `git revert <id_commit>`
@@ -289,18 +289,17 @@ Estos son algunos de ellos:
 
 * **Creación**
 
- 1. Crear branch local.
-
- 2. Hacer cambios en dicho branch.
- 3. Hacer commit.
- 4. Copiar el branch al repositorio remoto:
+  1. Crear branch local.
+  2. Hacer cambios en dicho branch.
+  3. Hacer commit.
+  4. Copiar el branch al repositorio remoto:
 
  `git push -u origin branch_remoto`
 
 * **Copia:**
 
- `git chekout -b local remoto`
+  `git chekout -b local remoto`
 
 * **Eliminación:**
 
- `git push origin --delete branch_remoto`
+  `git push origin --delete branch_remoto`
