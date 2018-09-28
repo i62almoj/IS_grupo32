@@ -38,7 +38,7 @@ Estos son algunos de ellos:
 
 `git pull`
 
-#Comandos GitHub II
+# Comandos GitHub II
 
 #### Ver branches remotos:
 
@@ -52,7 +52,7 @@ Estos son algunos de ellos:
 
 `git clone url`
 
-#Comandos GitHub II
+# Comandos GitHub II
 
 #### Ver branches remotos:
 
@@ -82,6 +82,6 @@ Estos son algunos de ellos:
 
  `git chekout -b local remoto`
 
-* ** Eliminación:**
+* **Eliminación:**
 
  `git push origin --delete branch_remoto`
