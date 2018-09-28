@@ -1,4 +1,4 @@
-#GitHub no es Git
+# GitHub no es Git
 
 GitHub es un servicio de alojamiento que ofrece a los desarrolladores repositorios de software usando el sistema de control de versiones, Git.
 
