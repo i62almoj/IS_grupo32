@@ -23,6 +23,8 @@ de código. Fundamentalmente permite:*
 ##### Listado de la configuración:
 `git config --list`
 
+## Los tres estados de Git
+
 ![EstadosGit](imagen/estadosGit.png)
 
 ## Comandos básicos 1
@@ -138,6 +140,7 @@ de código. Fundamentalmente permite:*
 
 ##### Comparar dos commits:
 `git diff id..id nombre_archivo`
+
 # Ramas o *Branches*
 
 Es la forma para separar la línea actual de desarrollo con respecto
@@ -271,35 +274,43 @@ Estos son algunos de ellos:
 
 `git clone url`
 
-# Comandos GitHub II
+# Dar seguimiento a *branches* remotos
 
-#### Ver branches remotos:
+**LOCAL → REMOTO**
 
-`git branch -r`
+ 1. Cambios en el repositorio local.
+ 2. Commit de los cambios.
+ 3. Añadir cambios a repositorio remoto:
 
-#### Ver todos los branches:
+    `git  push`
 
-`git branch -a`
+**REMOTO → LOCAL**
 
-#### Clonar un repositorio remoto:
+ * Sincronización y unión:
+ 
+   `git  fetch  origin`
 
-`git clone url`
+   `git  merge  origin/master`
 
+ * En un solo paso:
+
+   `git  pull`
+ 
 # Operaciones con *branches* remotos:
 
-* **Creación**
+**Creación**
 
-  1. Crear branch local.
-  2. Hacer cambios en dicho branch.
-  3. Hacer commit.
-  4. Copiar el branch al repositorio remoto:
+ 1. Crear branch local.
+ 2. Hacer cambios en dicho branch.
+ 3. Hacer commit.
+ 4. Copiar el branch al repositorio remoto:
 
- `git push -u origin branch_remoto`
+    `git push -u origin branch_remoto`
 
-* **Copia:**
+**Copia:**
 
   `git chekout -b local remoto`
 
-* **Eliminación:**
+**Eliminación:**
 
   `git push origin --delete branch_remoto`
