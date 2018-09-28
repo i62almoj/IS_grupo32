@@ -4,11 +4,11 @@
 
 *Sistema para el control distribuido de versiones
 de código. Fundamentalmente permite:*
-1. Dar seguimiento a los cambios realizados sobre un archivo.
+1. Dar seguimiento a los cambios realizados sobre un archivo
 
 2. Almacenar una copia de los cambios
 
-## Configuración Básica
+## Configuración básica
 
 ##### Nombre del administrador:
 `git config --global user.name "Juan Manuel Álvarez Morales"`
