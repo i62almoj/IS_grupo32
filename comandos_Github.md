@@ -51,3 +51,17 @@ Estos son algunos de ellos:
 #### Clonar un repositorio remoto:
 
 `git clone url`
+
+#Comandos GitHub II
+
+#### Ver branches remotos:
+
+`git branch -r`
+
+#### Ver todos los branches:
+
+`git branch -a`
+
+#### Clonar un repositorio remoto:
+
+`git clone url`
