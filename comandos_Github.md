@@ -38,7 +38,6 @@ Estos son algunos de ellos:
 
 `git pull`
 
-
 #Comandos GitHub II
 
 #### Ver branches remotos:
@@ -53,29 +52,19 @@ Estos son algunos de ellos:
 
 `git clone url`
 
+#Comandos GitHub II
 
-# Dar seguimiento a *branches* remotos:
+#### Ver branches remotos:
 
-* **LOCAL -> REMOTO**
+`git branch -r`
 
- 1. Cambios en el repositorio local.
- 2. Commit de los cambios.
- 3. Añadir cambios al repositorio remoto:
+#### Ver todos los branches:
 
- `git push`
+`git branch -a`
 
-* **REMOTO -> LOCAL**
+#### Clonar un repositorio remoto:
 
- * Sincronización y unión:
-
- `git fetch origin`
-
- `git merge/origin master`
-
- * En un solo paso:
-
- `git pull`
-
+`git clone url`
 
 # Operaciones con *branches* remotos:
 
