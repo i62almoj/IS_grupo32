@@ -8,7 +8,6 @@ El profesorado de la asignatura de Ingeniería del Software quiere informatizar 
 
 * **Alumnos**
 
-
 ### DATOS DE LA APLICACIÓN
 
 * DNI
@@ -31,7 +30,6 @@ El profesorado de la asignatura de Ingeniería del Software quiere informatizar 
 4. Buscar alumno.
 5. Mostrar todos los alumnos.
 6. Mostrar alumnos de un grupo.
-
 
 ### REQUISITOS NO FUNCIONALES
 
@@ -80,4 +78,8 @@ El profesorado de la asignatura de Ingeniería del Software quiere informatizar 
 
 *Todo esto se podrá ordenar de forma ascendente o descendente*
 
+##### Mostrar alumnos de un grupo
 
+* Se debe realizar la búsqueda por número de grupo.
+
+* Debe de ordenarse de manera alfabética.
