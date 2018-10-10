@@ -1,5 +1,5 @@
 ##### (ANVERSO)
-**ID:** 4 **Buscar alumno**
+**ID:** 5 **Mostrar alumno**
 
 Como usuario quiero buscar un alumno de la base de datos.
 

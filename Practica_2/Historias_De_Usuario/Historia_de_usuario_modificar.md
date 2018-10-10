@@ -8,4 +8,6 @@ Como usuario quiero modificar los datos de alumnos de la base de datos.
 ##### (REVERSO)
 * Quiero poder modificar todos los datos de un alumno existente en la base de datos.
 
-* Se debe especificar claramente los datos a modificar y su tipo.
+* Se debe especificar claramente el DNI o apellido del alumno que se desea buscar.
+
+* Si la búsqueda es por apellido y hay alumnos con el mismo, se pide el DNI.

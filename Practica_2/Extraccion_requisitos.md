@@ -27,9 +27,10 @@ El profesorado de la asignatura de Ingeniería del Software quiere informatizar 
 1. Añadir un alumno.
 2. Modificar alumno.
 3. Eliminar alumno.
-4. Buscar alumno.
-5. Mostrar todos los alumnos.
-6. Mostrar alumnos de un grupo.
+4. Eliminar todos los alumnos
+5. Mostrar alumno.
+6. Mostrar todos los alumnos.
+7. Mostrar alumnos de un grupo.
 
 ### REQUISITOS NO FUNCIONALES
 
@@ -45,12 +46,16 @@ El profesorado de la asignatura de Ingeniería del Software quiere informatizar 
 
 ##### Modificar Alumno
 * Usar DNI o apellidos
+* Si la búsqueda es por apellido y hay alumnos con el mismo, se pide el DNI.
 
 ##### Eliminar Alumno
 * Usar DNI o apellidos.
 * Si la búsqueda es por apellido y hay alumnos con el mismo, se muestran ambos y solicitamos al usuario el DNI del alumno que desea borrar.
 
-##### Buscar Alumno
+##### Eliminar todos los alumnos
+* Se elimina toda la información de la base de datos.
+
+##### Mostrar Alumno
 * Usar DNI, apellido o email.
 * Si la búsqueda es por apellido y hay alumnos con el mismo, se muestran ambos.
 
