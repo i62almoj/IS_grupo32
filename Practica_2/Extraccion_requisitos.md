@@ -4,9 +4,9 @@ El profesorado de la asignatura de Ingeniería del Software quiere informatizar 
 
 ### PARTES INTERESADAS
 
-**Profesor**
+* **Profesor**
 
-**Alumnos**
+* **Alumnos**
 
 
 ### DATOS DE LA APLICACIÓN
@@ -35,11 +35,12 @@ El profesorado de la asignatura de Ingeniería del Software quiere informatizar 
 
 ### REQUISITOS NO FUNCIONALES
 
-** El formato del fichero de la base de datos será binario. **
-** El lenguaje de programación usado será C++. **
+**El formato del fichero de la base de datos será binario.**
+
+**El lenguaje de programación usado será C++.**
 
 ##### Añadir Alumno
-* Todos los datos de la aplicación son obligatorios, excepto ** líder ** y ** notas **
+* Todos los datos de la aplicación son obligatorios, excepto **líder** y **notas**
 * Solo puede haber un líder por grupo.
 * Número máximo de alumnos: 150.
 * Manualmente o cargar de una base de datos.
@@ -57,7 +58,7 @@ El profesorado de la asignatura de Ingeniería del Software quiere informatizar 
 
 ##### Mostrar todos los alumnos
 
-** Ordenar: **
+**Ordenar:**
 
 * Alfabéticamente
  * Por nombre
@@ -69,7 +70,7 @@ El profesorado de la asignatura de Ingeniería del Software quiere informatizar 
 
 * Por grupo
 
-** Mostrar: **
+**Mostrar:**
 
 * Al mostrar el líder de un equipo se verá de forma especial.
 
