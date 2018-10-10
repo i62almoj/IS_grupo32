@@ -1,4 +1,4 @@
-###Eliminar todos
+### Eliminar todos
 
 **ID:** 4
 
@@ -23,4 +23,4 @@
 
 **Flujos alternativos:**
 
-2.a. Si la base de datos no existe o está vacía, la aplicación muestra un mensaje de error.
+2. a. Si la base de datos no existe o está vacía, la aplicación muestra un mensaje de error.

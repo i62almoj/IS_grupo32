@@ -1,4 +1,4 @@
-###Mostrar grupo
+### Mostrar grupo
 
 **ID:** 7
 
@@ -23,4 +23,4 @@
 
 **Flujos alternativos:**
 
-2.a. Si no existen alumnos con ese grupo, la aplicación muestra un mensaje de error.
+2. a. Si no existen alumnos con ese grupo, la aplicación muestra un mensaje de error.
