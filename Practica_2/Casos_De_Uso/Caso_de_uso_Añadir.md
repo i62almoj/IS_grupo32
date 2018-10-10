@@ -1,4 +1,4 @@
-###Añadir alumno
+### Añadir alumno
 
 **ID:** 1
 
@@ -23,4 +23,4 @@
 
 **Flujos alternativos:**
 
-2.a. Si el alumno ya existe, la aplicación muestra un mensaje de error.
+2. a. Si el alumno ya existe, la aplicación muestra un mensaje de error.
