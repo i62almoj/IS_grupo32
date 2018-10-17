@@ -31,6 +31,9 @@ El profesorado de la asignatura de Ingeniería del Software quiere informatizar 
 5. Mostrar alumno.
 6. Mostrar todos los alumnos.
 7. Mostrar alumnos de un grupo.
+8. Cargar base de datos.
+9. Guardar base de datos.
+
 
 ### REQUISITOS NO FUNCIONALES
 
@@ -88,3 +91,11 @@ El profesorado de la asignatura de Ingeniería del Software quiere informatizar 
 * Se debe realizar la búsqueda por número de grupo.
 
 * Debe de ordenarse de manera alfabética.
+
+##### Cargar base de datos
+
+* Carga los datos de los alumnos existentes.
+
+##### Guardar base de datos
+
+* Cualquier modificación será guardada en el sistema.
