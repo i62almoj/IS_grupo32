@@ -42,27 +42,27 @@ El profesorado de la asignatura de Ingeniería del Software quiere informatizar 
 **El lenguaje de programación usado será C++.**
 
 ##### Añadir Alumno
-* Todos los datos de la aplicación son obligatorios, excepto **líder** y **notas**
+* Todos los datos de la aplicación son obligatorios, excepto **líder** y **notas**.
 * Solo puede haber un líder por grupo.
 * Número máximo de alumnos: 150.
 * Manualmente o cargar de una base de datos.
 
 ##### Modificar Alumno
-* Usar DNI o apellidos
+* Usar DNI o apellidos.
 * Si la búsqueda es por apellido y hay alumnos con el mismo, se pide el DNI.
 
 ##### Eliminar Alumno
 * Usar DNI o apellidos.
 * Si la búsqueda es por apellido y hay alumnos con el mismo, se muestran ambos y solicitamos al usuario el DNI del alumno que desea borrar.
 
-##### Eliminar todos los alumnos
+##### Eliminar Todos los alumnos
 * Se elimina toda la información de la base de datos.
 
 ##### Mostrar Alumno
 * Usar DNI, apellido o email.
 * Si la búsqueda es por apellido y hay alumnos con el mismo, se muestran ambos.
 
-##### Mostrar todos los alumnos
+##### Mostrar Todos los alumnos
 
 **Ordenar:**
 
@@ -78,7 +78,7 @@ El profesorado de la asignatura de Ingeniería del Software quiere informatizar 
 
 **Mostrar:**
 
-* Al mostrar el líder de un equipo se verá de forma especial.
+* Al mostrar el líder de un equipo se verá de forma especial
 
 * Por línea de comandos (obligatorio)
 
