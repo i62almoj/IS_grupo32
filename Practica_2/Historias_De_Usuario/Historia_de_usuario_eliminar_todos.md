@@ -1,4 +1,4 @@
-##### (ANVERSO)
+#### (ANVERSO)
 **ID:** 5 **Eliminar todos**
 
 Como usuario quiero eliminar todos los alumnos de la base de datos.
@@ -7,5 +7,5 @@ Como usuario quiero eliminar todos los alumnos de la base de datos.
 
 **Depende de:** Eliminar
 
-##### (REVERSO)
+#### (REVERSO)
 * Quiero poder eliminar los datos de todos los alumnos.

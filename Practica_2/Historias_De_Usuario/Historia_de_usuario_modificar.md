@@ -1,4 +1,4 @@
-##### (ANVERSO)
+#### (ANVERSO)
 **ID:** 2 **Modificar alumno**
 
 Como usuario quiero modificar los datos de alumnos de la base de datos.
@@ -7,7 +7,7 @@ Como usuario quiero modificar los datos de alumnos de la base de datos.
 
 **Depende de:** No depende.
 
-##### (REVERSO)
+#### (REVERSO)
 * Quiero poder modificar todos los datos de un alumno existente en la base de datos.
 
 * Se debe especificar claramente el DNI o apellido del alumno que se desea buscar.

@@ -1,4 +1,4 @@
-##### (ANVERSO)
+#### (ANVERSO)
 **ID:** 6 **Mostrar**
 
 Como usuario quiero buscar uno o varios alumnos, o también, un grupo de alumnos de la base de datos.
@@ -7,5 +7,5 @@ Como usuario quiero buscar uno o varios alumnos, o también, un grupo de alumnos
 
 **Depende de:** No depende.
 
-##### (REVERSO)
+#### (REVERSO)
 * Se elegirá si la búsqueda es de un alumno, de varios o de un grupo.

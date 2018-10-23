@@ -1,4 +1,4 @@
-##### (ANVERSO)
+#### (ANVERSO)
 **ID:** 1 **Añadir alumno**
 
 Como usuario quiero agregar alumnos a la base de datos.
@@ -7,7 +7,7 @@ Como usuario quiero agregar alumnos a la base de datos.
 
 **Depende de:** No depende.
 
-##### (REVERSO)
+#### (REVERSO)
 * Quiero poder agregar todos los datos de un alumno, siendo estos obligatorios excepto líder y notas.
 
 * Solo puede haber un líder por grupo.

@@ -1,4 +1,4 @@
-##### (ANVERSO)
+#### (ANVERSO)
 **ID:** 9 **Mostrar grupo**
 
 Como usuario quiero mostrar todos los alumnos de un grupo de la base de datos.
@@ -7,7 +7,7 @@ Como usuario quiero mostrar todos los alumnos de un grupo de la base de datos.
 
 **Depende de:** Mostrar
 
-##### (REVERSO)
+#### (REVERSO)
 * Se debe realizar la búsqueda por número de grupo.
 
 * Debe de ordenarse de manera alfabética.

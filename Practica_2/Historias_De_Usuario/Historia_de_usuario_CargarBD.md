@@ -1,4 +1,4 @@
-##### (ANVERSO)
+#### (ANVERSO)
 **ID:** 10 **Cargar base de datos**
 
 Carga de los datos de los alumnos existentes.
@@ -7,5 +7,5 @@ Carga de los datos de los alumnos existentes.
 
 **Depende de:**  No depende.
 
-##### (REVERSO)
+#### (REVERSO)
 * Deben existir alumnos en la base de datos.

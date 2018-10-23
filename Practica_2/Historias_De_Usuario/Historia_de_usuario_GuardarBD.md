@@ -1,4 +1,4 @@
-##### (ANVERSO)
+#### (ANVERSO)
 **ID:** 11 **Guardar base de datos**
 
 Guarda los cambios de la base de datos.
@@ -7,5 +7,5 @@ Guarda los cambios de la base de datos.
 
 **Depende de:** No depende.
 
-##### (REVERSO)
+#### (REVERSO)
 * Deben existir la base de datos.

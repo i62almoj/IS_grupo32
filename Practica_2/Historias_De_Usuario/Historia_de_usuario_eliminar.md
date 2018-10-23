@@ -1,4 +1,4 @@
-##### (ANVERSO)
+#### (ANVERSO)
 **ID:** 3 **Eliminar**
 
 Como usuario quiero eliminar uno o varios alumnos de la base de datos.
@@ -7,5 +7,5 @@ Como usuario quiero eliminar uno o varios alumnos de la base de datos.
 
 **Depende de:** No depende.
 
-##### (REVERSO)
+#### (REVERSO)
 * Se elegirá si la búsqueda es de un alumno o de varios.

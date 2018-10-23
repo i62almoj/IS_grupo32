@@ -1,4 +1,4 @@
-##### (ANVERSO)
+#### (ANVERSO)
 **ID:** 8 **Mostrar todos**
 
 Como usuario quiero mostrar todos los alumnos de la base de datos.
@@ -7,7 +7,7 @@ Como usuario quiero mostrar todos los alumnos de la base de datos.
 
 **Depende de:** Mostrar
 
-##### (REVERSO)
+#### (REVERSO)
 **Se debe ordenar los resultados de una de las siguientes formas a elegir por el usuario:**
 
 * Alfabéticamente

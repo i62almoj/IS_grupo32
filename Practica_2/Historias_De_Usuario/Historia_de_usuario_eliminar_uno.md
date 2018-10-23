@@ -1,4 +1,4 @@
-##### (ANVERSO)
+#### (ANVERSO)
 **ID:** 4 **Eliminar alumno**
 
 Como usuario quiero eliminar un alumno de la base de datos.
@@ -7,7 +7,7 @@ Como usuario quiero eliminar un alumno de la base de datos.
 
 **Depende de:** Eliminar
 
-##### (REVERSO)
+#### (REVERSO)
 * Quiero poder eliminar los datos de un alumno.
 
 * Se debe especificar claramente el DNI o apellido del alumno que se desea eliminar.
