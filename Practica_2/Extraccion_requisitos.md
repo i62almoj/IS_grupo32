@@ -2,13 +2,13 @@
 
 El profesorado de la asignatura de Ingeniería del Software quiere informatizar los datos de contacto de los alumnos en un programa informático que guarde esta información.
 
-### PARTES INTERESADAS
+## PARTES INTERESADAS
 
 * **Profesor**
 
 * **Alumnos**
 
-### DATOS DE LA APLICACIÓN
+## DATOS DE LA APLICACIÓN
 
 * DNI
 * NOMBRE
@@ -22,7 +22,7 @@ El profesorado de la asignatura de Ingeniería del Software quiere informatizar 
 * LÍDER
 * NOTAS
 
-### REQUISITOS FUNCIONALES
+## REQUISITOS FUNCIONALES
 
 1. Añadir un alumno.
 2. Modificar alumno.
@@ -35,34 +35,34 @@ El profesorado de la asignatura de Ingeniería del Software quiere informatizar 
 9. Guardar base de datos.
 
 
-### REQUISITOS NO FUNCIONALES
+## REQUISITOS NO FUNCIONALES
 
 **El formato del fichero de la base de datos será binario.**
 
 **El lenguaje de programación usado será C++.**
 
-##### Añadir Alumno
+### Añadir Alumno
 * Todos los datos de la aplicación son obligatorios, excepto **líder** y **notas**.
 * Solo puede haber un líder por grupo.
 * Número máximo de alumnos: 150.
 * Manualmente o cargar de una base de datos.
 
-##### Modificar Alumno
+### Modificar Alumno
 * Usar DNI o apellidos.
 * Si la búsqueda es por apellido y hay alumnos con el mismo, se pide el DNI.
 
-##### Eliminar Alumno
+### Eliminar Alumno
 * Usar DNI o apellidos.
 * Si la búsqueda es por apellido y hay alumnos con el mismo, se muestran ambos y solicitamos al usuario el DNI del alumno que desea borrar.
 
-##### Eliminar Todos los alumnos
+### Eliminar Todos los alumnos
 * Se elimina toda la información de la base de datos.
 
-##### Mostrar Alumno
+### Mostrar Alumno
 * Usar DNI, apellido o email.
 * Si la búsqueda es por apellido y hay alumnos con el mismo, se muestran ambos.
 
-##### Mostrar Todos los alumnos
+### Mostrar Todos los alumnos
 
 **Ordenar:**
 
@@ -86,16 +86,16 @@ El profesorado de la asignatura de Ingeniería del Software quiere informatizar 
 
 *Todo esto se podrá ordenar de forma ascendente o descendente*
 
-##### Mostrar alumnos de un grupo
+### Mostrar alumnos de un grupo
 
 * Se debe realizar la búsqueda por número de grupo.
 
 * Debe de ordenarse de manera alfabética.
 
-##### Cargar base de datos
+### Cargar base de datos
 
 * Carga los datos de los alumnos existentes.
 
-##### Guardar base de datos
+### Guardar base de datos
 
 * Cualquier modificación será guardada en el sistema.
