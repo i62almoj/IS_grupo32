@@ -1,6 +1,6 @@
 ### Mostrar grupo
 
-**ID:** 7
+**ID:** 9
 
 **Breve descripción:** Se muestran todos los integrantes del grupo especificado.
 

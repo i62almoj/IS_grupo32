@@ -1,13 +1,11 @@
 ##### (ANVERSO)
-**ID:** 3 **Eliminar alumno**
+**ID:** 3 **Eliminar**
 
-Como usuario quiero eliminar un alumno de la base de datos.
+Como usuario quiero eliminar uno o varios alumnos de la base de datos.
 
 **Prioridad:** 2
-**Depende de:** Añadir alumnos
+
+**Depende de:** No depende.
+
 ##### (REVERSO)
-* Quiero poder eliminar los datos de un alumno.
-
-* Se debe especificar claramente el DNI o apellido del alumno que se desea eliminar.
-
-* Si la búsqueda es por apellido y hay alumnos con el mismo, se muestran ambos y solicitamos al usuario el DNI del alumno que desea borrar.
+* Se elegirá si la búsqueda es de un alumno o de varios.

@@ -1,10 +1,11 @@
 ##### (ANVERSO)
-**ID:** 6 **Mostrar todos**
+**ID:** 8 **Mostrar todos**
 
 Como usuario quiero mostrar todos los alumnos de la base de datos.
 
 **Prioridad:** 3
-**Depende de:** Añadir alumno.
+
+**Depende de:** Mostrar
 
 ##### (REVERSO)
 **Se debe ordenar los resultados de una de las siguientes formas a elegir por el usuario:**

@@ -1,12 +1,11 @@
 ##### (ANVERSO)
-**ID:** 5 **Mostrar alumno**
+**ID:** 6 **Mostrar**
 
-Como usuario quiero buscar un alumno de la base de datos.
+Como usuario quiero buscar uno o varios alumnos, o también, un grupo de alumnos de la base de datos.
 
 **Prioridad:** 2
-**Depende de:** Añadir alumno.
+
+**Depende de:** No depende.
 
 ##### (REVERSO)
-* Se debe especificar claramente el DNI, apellido o email del alumno que se desea buscar.
-
-* Si la búsqueda es por apellido y hay alumnos con el mismo, se muestran ambos.
+* Se elegirá si la búsqueda es de un alumno, de varios o de un grupo.

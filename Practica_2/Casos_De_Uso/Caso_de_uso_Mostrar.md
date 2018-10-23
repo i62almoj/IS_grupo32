@@ -1,8 +1,8 @@
-### Mostrar alumno
+### Mostrar
 
-**ID:** 5
+**ID:** 6
 
-**Breve descripción:** Se muestran los datos de un alumno de la base de datos.
+**Breve descripción:** Se elegirá si la búsqueda es de uno o varios alumnos, o de un grupo.
 
 **Actor principal:** Profesor.
 
@@ -10,17 +10,17 @@
 
 **Precondiciones:**
 
-1. El alumno debe existir en la base de datos.
+1. Deben existir alumnos en la base de datos.
 
 **Flujo principal:**
 
-1. El caso de uso empieza cuando el usuario necesita visualizar los datos de un alumno de la base de datos.
-2. El sistema pide los datos del alumno a buscar.
+1. El caso de uso empieza cuando el usuario necesita visualizar los datos de un alumno o de varios de la base de datos.
+2. El sistema pide el tipo de búsqueda.
 
 **Postcondiciones:**
 
-* El sistema muestra el alumno de la base de datos.
+* Dependiendo de lo que haya elegido el usuario, el sistema mostrará los datos de todos los alumnos o pedirá algún dato para una búsqueda concreta.
 
 **Flujos alternativos:**
 
-2. a. Si el alumno no existe, la aplicación muestra un mensaje de error.
+2. a. Si el usuario introduce una opción incorrecta, la aplicación muestra un mensaje de error.

@@ -5,6 +5,8 @@ Como usuario quiero agregar alumnos a la base de datos.
 
 **Prioridad:** 1
 
+**Depende de:** No depende.
+
 ##### (REVERSO)
 * Quiero poder agregar todos los datos de un alumno, siendo estos obligatorios excepto líder y notas.
 

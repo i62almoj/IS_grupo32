@@ -1,6 +1,6 @@
 ### Eliminar todos
 
-**ID:** 4
+**ID:** 5
 
 **Breve descripción:** Se eliminan todos los alumnos de la base de datos.
 
