@@ -35,6 +35,9 @@ El profesorado de la asignatura de Ingeniería del Software quiere informatizar 
 9. Mostrar alumnos de un grupo.
 10. Cargar base de datos.
 11. Guardar base de datos.
+12. Cargar fichero.
+13. Guardar fichero.
+14. Buscar
 
 ## REQUISITOS NO FUNCIONALES
 
