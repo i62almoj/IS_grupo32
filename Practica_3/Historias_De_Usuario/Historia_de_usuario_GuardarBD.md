@@ -3,9 +3,9 @@
 
 Guarda los cambios de la base de datos.
 
-**Prioridad:** 2
+**Prioridad:** 1
 
 **Depende de:** No depende.
 
 #### (REVERSO)
-* Deben existir la base de datos.
+* Debe existir la base de datos.

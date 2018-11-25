@@ -3,7 +3,7 @@
 
 Carga de los datos de los alumnos existentes.
 
-**Prioridad:** 2
+**Prioridad:** 1
 
 **Depende de:**  No depende.
 

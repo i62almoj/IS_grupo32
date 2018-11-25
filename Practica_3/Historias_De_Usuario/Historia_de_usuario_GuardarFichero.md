@@ -8,4 +8,4 @@ Guarda el fichero con los nuevos datos.
 **Depende de:** No depende.
 
 #### (REVERSO)
-* Deben existir la base de datos.
+* Debe existir el fichero de la copia de seguridad.

@@ -1,5 +1,5 @@
 #### (ANVERSO)
-**ID:** 12 **Cargar el fichero*
+**ID:** 12 **Cargar el fichero**
 
 Carga el fichero para introducir datos.
 
@@ -8,4 +8,4 @@ Carga el fichero para introducir datos.
 **Depende de:**  No depende.
 
 #### (REVERSO)
-* Deben existir una base de datos.
+* Debe existir el fichero de la copia de seguridad.
