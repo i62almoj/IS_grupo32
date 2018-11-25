@@ -2,7 +2,7 @@
 
 **ID:** 11
 
-**Breve descripción:** El sistema guarda la base de datos
+**Breve descripción:** El sistema guarda la base de datos.
 
 **Actor principal:** Profesor.
 
@@ -22,4 +22,4 @@
 
 **Flujos alternativos:**
 
-2. a. Si la base de datos no existe o está vacía, la aplicación muestra un mensaje de error y vuelve al menú principal.
+2. a. Si la base de datos no existe, la aplicación muestra un mensaje de error y vuelve al menú principal.

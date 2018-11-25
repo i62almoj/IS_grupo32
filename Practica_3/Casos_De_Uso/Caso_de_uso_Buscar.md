@@ -23,4 +23,4 @@
 
 **Flujos alternativos:**
 
-2. a. Si no existe el alumno en la base de datos, la aplicación muestra un mensaje de error y vuelve al menú principal.
+2. a. Si no existe el alumno en la base de datos, la aplicación actuará dependiendo del caso en el que estemos.

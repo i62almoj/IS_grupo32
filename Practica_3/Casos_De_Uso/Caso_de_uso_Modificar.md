@@ -23,4 +23,4 @@
 
 **Flujos alternativos:**
 
-2. a. Si el alumno no existe, la aplicación muestra un mensaje de error.
+2. a. Si el alumno no existe, la aplicación muestra un mensaje de error y vuelve al menú principal.
