@@ -3,7 +3,7 @@
 
 El sistema realiza una búsqueda en la base de datos en base a la consulta del usuario.
 
-**Prioridad:** 2
+**Prioridad:** 1
 
 **Depende de:** No depende.
 
