@@ -13,3 +13,5 @@ Como usuario quiero eliminar un alumno de la base de datos.
 * Se debe especificar claramente el DNI o apellido del alumno que se desea eliminar.
 
 * Si la búsqueda es por apellido y hay alumnos con el mismo, se muestran ambos y solicitamos al usuario el DNI del alumno que desea borrar.
+
+* Si el alumno que se desea eliminar es el líder, se solicita que se elija un nuevo líder.
