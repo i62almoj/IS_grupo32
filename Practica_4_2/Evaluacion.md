@@ -4,6 +4,7 @@ Semana 3
 ___
 
 * Fallos:
+
   Distribucion horaria y tiempo de desarrollo establecido inicialmente muy limitado.
 
 * Soluciones: 
