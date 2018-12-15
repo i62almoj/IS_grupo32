@@ -262,3 +262,28 @@ void Agenda::MostrarAlumno(string DNI){
 		}
 	}
 }
+
+void Agenda::MostrarTodos(){
+
+	list<Alumno>::iterator it;
+	string Lider;
+	int cont=1;
+	
+	for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
+		
+		if((*it).getLider()==true){
+			
+			Lider="Sí";
+				
+		}else{
+				
+			Lider="No";
+		}
+			
+		cout<<cont<<".- DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<
+			" - Dirección: "<<(*it).getDireccion()<<" - Teléfono: "<<(*it).getTelefono()<<" - Curso más alto: "<<(*it).getCursoAlto()<<
+				" - Grupo: "<<(*it).getGrupo()<<" - ¿Líder?: "<<Lider<<" - Nota: "<<(*it).getNota()<<endl;
+		
+		cont++;
+	}
+}
