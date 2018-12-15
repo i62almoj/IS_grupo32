@@ -2,6 +2,20 @@
 
 using namespace std;
 
+bool Agenda::BuscarAlumno(string DNI){
+	
+	list<Alumno>::iterator it;
+	
+	for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
+		
+		if((*it).getDNI()==DNI){
+			
+			return true;
+		}
+	}
+	
+	return false;
+}
 
 void Agenda::AnadirAlumno(){
 	
