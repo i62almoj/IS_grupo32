@@ -260,7 +260,7 @@ void Agenda::MostrarAlumno(string DNI){
 				" - Dirección: "<<(*it).getDireccion()<<" - Teléfono: "<<(*it).getTelefono()<<" - Curso más alto: "<<(*it).getCursoAlto()<<
 					" - Grupo: "<<(*it).getGrupo()<<" - ¿Líder?: "<<Lider<<" - Nota: "<<(*it).getNota()<<endl;
 		}
-	}
+	} 
 }
 
 void Agenda::MostrarTodos(){
