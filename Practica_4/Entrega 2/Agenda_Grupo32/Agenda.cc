@@ -238,3 +238,27 @@ void Agenda::EliminarTodos(){
 	}
 }
 
+void Agenda::MostrarAlumno(string DNI){
+
+	list<Alumno>::iterator it;
+	string Lider;
+	
+	for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
+		
+		if((*it).getDNI()==DNI){
+			
+			if((*it).getLider()==true){
+				
+				Lider="Sí";
+				
+			}else{
+				
+				Lider="No";
+			}
+			
+			cout<<"DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<
+				" - Dirección: "<<(*it).getDireccion()<<" - Teléfono: "<<(*it).getTelefono()<<" - Curso más alto: "<<(*it).getCursoAlto()<<
+					" - Grupo: "<<(*it).getGrupo()<<" - ¿Líder?: "<<Lider<<" - Nota: "<<(*it).getNota()<<endl;
+		}
+	}
+}
