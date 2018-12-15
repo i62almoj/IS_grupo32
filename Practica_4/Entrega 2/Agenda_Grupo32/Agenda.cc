@@ -260,7 +260,7 @@ void Agenda::MostrarAlumno(string DNI){
 				" - Dirección: "<<(*it).getDireccion()<<" - Teléfono: "<<(*it).getTelefono()<<" - Curso más alto: "<<(*it).getCursoAlto()<<
 					" - Grupo: "<<(*it).getGrupo()<<" - ¿Líder?: "<<Lider<<" - Nota: "<<(*it).getNota()<<endl;
 		}
-	} 
+	}
 }
 
 void Agenda::MostrarTodos(){
@@ -285,5 +285,36 @@ void Agenda::MostrarTodos(){
 				" - Grupo: "<<(*it).getGrupo()<<" - ¿Líder?: "<<Lider<<" - Nota: "<<(*it).getNota()<<endl;
 		
 		cont++;
+	}
+}
+
+void Agenda::MostrarGrupo(){
+	
+	list<Alumno>::iterator it;
+	string Lider;
+	int cont=1, Grupo;
+
+	cout<<"Introduzca el número de grupo: ";
+	cin>>Grupo;
+	
+	for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
+		
+		if((*it).getGrupo()==Grupo){
+			
+			if((*it).getLider()==true){
+			
+				Lider="Sí";
+				
+			}else{
+				
+				Lider="No";
+			}
+			
+			cout<<cont<<".- DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<
+				" - Dirección: "<<(*it).getDireccion()<<" - Teléfono: "<<(*it).getTelefono()<<" - Curso más alto: "<<(*it).getCursoAlto()<<
+					" - ¿Líder?: "<<Lider<<" - Nota: "<<(*it).getNota()<<endl;
+			
+			cont++;
+		}
 	}
 }
