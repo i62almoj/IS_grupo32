@@ -42,6 +42,21 @@ int Agenda::BuscarAlumnoAp(string Apellidos){
 	return 0;
 }
 
+bool Agenda::BuscarAlumnoEm(string Email){
+	
+	list<Alumno>::iterator it;
+	
+	for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
+		
+		if((*it).getEmail()==Email){
+			
+			return true;
+		}
+	}
+	
+	return false;
+}
+
 void Agenda::AnadirAlumno(){
 	
 	Alumno a;
