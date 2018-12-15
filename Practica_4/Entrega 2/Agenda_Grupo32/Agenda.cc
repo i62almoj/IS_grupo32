@@ -17,6 +17,31 @@ bool Agenda::BuscarAlumno(string DNI){
 	return false;
 }
 
+int Agenda::BuscarAlumnoAp(string Apellidos){
+	
+	int cont=0;
+	list<Alumno>::iterator it;
+
+	for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
+		
+		if((*it).getApellidos()==Apellidos){
+			
+			cont++;
+		}
+	}
+	
+	if(cont>1){
+		
+		return 2;
+		
+	}else if(cont==1){
+		
+		return 1;
+	}
+	
+	return 0;
+}
+
 void Agenda::AnadirAlumno(){
 	
 	Alumno a;
