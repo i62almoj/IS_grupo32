@@ -27,8 +27,10 @@ ___
 
 * Fallos:
 
-  Distribución horaria y tiempo de desarrollo establecido inicialmente muy limitado.
+  1. Distribución horaria y tiempo de desarrollo establecido inicialmente muy limitado.
+  2. El planteamiento que teníamos del código del programa no nos parecía el mejor.
 
 * Soluciones: 
 
-  Reorganización en la distribución horaria del proyecto, así como de las horas totales del mismo.
+  1. Reorganización en la distribución horaria del proyecto, así como de las horas totales del mismo.
+  2. Replanteamiento del código y realización del nuevo código actualizado.
