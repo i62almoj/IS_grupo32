@@ -1,318 +1,390 @@
 #include <iostream>
 #include <cstdlib>
 #include <list>
+#include <fstream>
 #include "Alumno.h"
 #include "Profesor.h"
 #include "Agenda.h"
 
 using namespace std;
 
+typedef struct profesor{
+	
+	string ID, Password;
+	int Rol;
+	
+}profe;
+
 int main(){
 
 	int opcion, resp, cont;
-	char opc = 's';
-	string DNI, Apellidos, Email;
+	string DNI, Apellidos, Email, ID, Password;
 	Agenda agenda;
 	list<Alumno>::iterator it;
+	list<Profesor> Profesores_;
+	list<Profesor>::iterator it2;
+	Profesor p;
+	ifstream fichero;
+	profe pro;
+	bool encontrado=false;
 	
-	while (opc == 's'){
+	fichero.open("Profesores.bin", ios::in | ios::binary);
 	
-		cout << "\n\n";
-        cout << "\t\t  ====== AGENDA DE ALUMNOS ======";
-        cout <<"\n\n                                          ";
-     	cout << "\n \t\t\t 1. Añadir";
-        cout << "\n \t\t\t 2. Modificar";
-        cout << "\n \t\t\t 3. Eliminar";
-        cout << "\n \t\t\t 4. Mostrar";
-        cout << "\n \t\t\t 5. Cargar fichero";
-        cout << "\n \t\t\t 6. Guardar fichero";
-        cout << "\n \t\t\t 7. Cargar base de datos";
-        cout << "\n \t\t\t 8. Guardar base de datos";
-        cout << "\n \t\t\t 9. Salir";
-        cout << "\n\n";
-        cout << "\t\t\t Seleccione la opción que desee: ";
-        cin>>opcion;
+	if(fichero.is_open()){
+			
+		Profesores_.clear();
+			
+		while(!fichero.eof() && fichero.read((char *)&pro, sizeof(pro))){
+				
+			p.setID(pro.ID);
+			p.setPassword(pro.Password);
+			p.setRol(pro.Rol);
+				
+			Profesores_.push_back(p);
+		}
+		
+		fichero.close();
+	}
+	
+	cout<<"Introduzca su ID de profesor: ";
+	cin>>ID;
+	
+	for(it2=Profesores_.begin();it2!=Profesores_.end();it2++){
+		
+		if((*it2).getID()==ID){
+			
+			cout<<"Introduzca su contraseña: ";
+			cin>>Password;
+			
+			if((*it2).getPassword()==Password){
+				
+				encontrado=true;
+				
+				while(true){
+	
+					cout << "\n\n";
+			        cout << "\t\t  ====== AGENDA DE ALUMNOS ======";
+			        cout <<"\n\n                                          ";
+			     	cout << "\n \t\t\t 1. Añadir";
+			        cout << "\n \t\t\t 2. Modificar";
+			        cout << "\n \t\t\t 3. Eliminar";
+			        cout << "\n \t\t\t 4. Mostrar";
+			        cout << "\n \t\t\t 5. Cargar copia de seguridad";
+			        cout << "\n \t\t\t 6. Guardar copia de seguridad";
+			        cout << "\n \t\t\t 7. Cargar base de datos";
+			        cout << "\n \t\t\t 8. Guardar base de datos";
+			        cout << "\n \t\t\t 9. Salir";
+			        cout << "\n\n";
+			        cout << "\t\t\t Seleccione la opción que desee: ";
+			        cin>>opcion;
         
-        if(opcion>9 || opcion<1){
+			        if(opcion>9 || opcion<1){
         
-            cout<<"\n \t\t\t¡Opción incorrecta!"<<endl;
-            cout<<"\n \t\t\tIntroduzca otra opción: ";
-            cin>>opcion;
-        }
+			            cout<<"\n \t\t\t¡Opción incorrecta!"<<endl;
+			            cout<<"\n \t\t\tIntroduzca otra opción: ";
+			            cin>>opcion;
+			        }
         
-        switch(opcion){
+			        switch(opcion){
         
-        	case 1: 
-         		agenda.AnadirAlumno();
-         		break;
-         	case 2:
-		    	if(agenda.Alumnos_.empty()){
+			        	case 1: 
+			         		agenda.AnadirAlumno();
+			         		break;
+			         	case 2:
+					    	if(agenda.Alumnos_.empty()){
          
-				 	cout<<"No hay ningún alumno en la base de datos"<<endl;
+							 	cout<<"No hay ningún alumno en la base de datos"<<endl;
 					
-		    	}else{
+					    	}else{
 		    		
-					cout<<"¿Desea buscar por DNI(0) o por Apellidos(1)?"<<endl;
-					cin>>resp;
-					if(resp==0){
+								cout<<"¿Desea buscar por DNI(0) o por Apellidos(1)?"<<endl;
+								cin>>resp;
+								if(resp==0){
 					
-						cout<<"Introduzca el DNI del alumno a modificar: ";
-						cin>>DNI;
-						if(agenda.BuscarAlumno(DNI)==false){
+									cout<<"Introduzca el DNI del alumno a modificar: ";
+									cin>>DNI;
+									if(agenda.BuscarAlumno(DNI)==false){
 						
-							cout<<"No existe ningún alumno con ese DNI"<<endl;
+										cout<<"No existe ningún alumno con ese DNI"<<endl;
 						
-						}else if(agenda.BuscarAlumno(DNI)==true){
+									}else if(agenda.BuscarAlumno(DNI)==true){
 						
-							agenda.ModificarAlumno(DNI);
-						}
+										agenda.ModificarAlumno(DNI);
+									}
 					
-					}else if(resp==1){
+								}else if(resp==1){
 					
-						cout<<"Introduzca los apellidos del alumno a modificar: ";
-						cin.ignore();
-						getline(cin, Apellidos, '\n');
-						if(agenda.BuscarAlumnoAp(Apellidos)==0){
+									cout<<"Introduzca los apellidos del alumno a modificar: ";
+									cin.ignore();
+									getline(cin, Apellidos, '\n');
+									if(agenda.BuscarAlumnoAp(Apellidos)==0){
 						
-							cout<<"No existe ningún alumno con esos apellidos"<<endl;
+										cout<<"No existe ningún alumno con esos apellidos"<<endl;
 						
-						}else if(agenda.BuscarAlumnoAp(Apellidos)==1){
+									}else if(agenda.BuscarAlumnoAp(Apellidos)==1){
 						
-							for(it=agenda.Alumnos_.begin();it!=agenda.Alumnos_.end();it++){
+										for(it=agenda.Alumnos_.begin();it!=agenda.Alumnos_.end();it++){
 		
-								if((*it).getApellidos()==Apellidos){
+											if((*it).getApellidos()==Apellidos){
 			
-									DNI=(*it).getDNI();
-								}
-							}
+												DNI=(*it).getDNI();
+											}
+										}
 						
-							agenda.ModificarAlumno(DNI);
+										agenda.ModificarAlumno(DNI);
 						
-						}else if(agenda.BuscarAlumnoAp(Apellidos)==2){
+									}else if(agenda.BuscarAlumnoAp(Apellidos)==2){
 							
-							cont=1;
+										cont=1;
 							
-							for(it=agenda.Alumnos_.begin();it!=agenda.Alumnos_.end();it++){
+										for(it=agenda.Alumnos_.begin();it!=agenda.Alumnos_.end();it++){
 		
-								if((*it).getApellidos()==Apellidos){
+											if((*it).getApellidos()==Apellidos){
 			
-									cout<<cont<<".- DNI: "<<(*it).getDNI()<<" - Apellidos: "<<(*it).getApellidos()<<endl;
+												cout<<cont<<".- DNI: "<<(*it).getDNI()<<" - Apellidos: "<<(*it).getApellidos()<<endl;
 									
-									cont++;
+												cont++;
+											}
+										}
+						
+										cout<<"Hay varios alumnos con esos apellidos, introduzca el DNI del alumno a modificar: "<<endl;
+										cin>>DNI;
+										if(agenda.BuscarAlumno(DNI)==false){
+						
+											cout<<"No existe ningún alumno con ese DNI"<<endl;
+						
+										}else if(agenda.BuscarAlumno(DNI)==true){
+						
+											agenda.ModificarAlumno(DNI);
+										}
+									}
+					
+								}else{
+					
+									cout<<"Opción incorrecta, debe ser 0 ó 1"<<endl;
 								}
-							}
-						
-							cout<<"Hay varios alumnos con esos apellidos, introduzca el DNI del alumno a modificar: "<<endl;
-							cin>>DNI;
-							if(agenda.BuscarAlumno(DNI)==false){
-						
-								cout<<"No existe ningún alumno con ese DNI"<<endl;
-						
-							}else if(agenda.BuscarAlumno(DNI)==true){
-						
-								agenda.ModificarAlumno(DNI);
-							}
-						}
-					
-					}else{
-					
-						cout<<"Opción incorrecta, debe ser 0 ó 1"<<endl;
-					}
-		    	}
-         		break;
-            case 3:
-    			if(agenda.Alumnos_.empty()){
+					    	}
+			         		break;
+			            case 3:
+			    			if(agenda.Alumnos_.empty()){
 
-		 			cout<<"No hay ningún alumno en la base de datos"<<endl;
+					 			cout<<"No hay ningún alumno en la base de datos"<<endl;
 				
-				}else{
+							}else{
 					
-					cout<<"¿Desea eliminar todos los alumnos(0) o solo un alumno(1)?"<<endl;
-					cin>>resp;
-					if(resp==0){
+								cout<<"¿Desea eliminar todos los alumnos(0) o solo un alumno(1)?"<<endl;
+								cin>>resp;
+								if(resp==0){
 					
-						agenda.EliminarTodos();
+									agenda.EliminarTodos();
 					
-					}else if(resp==1){
+								}else if(resp==1){
 					
-				    	cout<<"¿Desea buscar por DNI(0) o por Apellidos(1)?"<<endl;
-						cin>>resp;
-						if(resp==0){
+							    	cout<<"¿Desea buscar por DNI(0) o por Apellidos(1)?"<<endl;
+									cin>>resp;
+									if(resp==0){
 					
-							cout<<"Introduzca el DNI del alumno a modificar: ";
-							cin>>DNI;
-							if(agenda.BuscarAlumno(DNI)==false){
+										cout<<"Introduzca el DNI del alumno a modificar: ";
+										cin>>DNI;
+										if(agenda.BuscarAlumno(DNI)==false){
 						
-								cout<<"No existe ningún alumno con ese DNI"<<endl;
+											cout<<"No existe ningún alumno con ese DNI"<<endl;
 						
-							}else if(agenda.BuscarAlumno(DNI)==true){
+										}else if(agenda.BuscarAlumno(DNI)==true){
 						
-								agenda.EliminarAlumno(DNI);
-							}
+											agenda.EliminarAlumno(DNI);
+										}
 					
-						}else if(resp==1){
+									}else if(resp==1){
 					
-							cout<<"Introduzca los apellidos del alumno a modificar: ";
-							cin.ignore();
-							getline(cin, Apellidos, '\n');
-							if(agenda.BuscarAlumnoAp(Apellidos)==0){
+										cout<<"Introduzca los apellidos del alumno a modificar: ";
+										cin.ignore();
+										getline(cin, Apellidos, '\n');
+										if(agenda.BuscarAlumnoAp(Apellidos)==0){
 						
-								cout<<"No existe ningún alumno con esos apellidos"<<endl;
+											cout<<"No existe ningún alumno con esos apellidos"<<endl;
 						
-							}else if(agenda.BuscarAlumnoAp(Apellidos)==1){
+										}else if(agenda.BuscarAlumnoAp(Apellidos)==1){
 						
-								for(it=agenda.Alumnos_.begin();it!=agenda.Alumnos_.end();it++){
+											for(it=agenda.Alumnos_.begin();it!=agenda.Alumnos_.end();it++){
 		
-									if((*it).getApellidos()==Apellidos){
+												if((*it).getApellidos()==Apellidos){
 			
-										DNI=(*it).getDNI();
-									}
+													DNI=(*it).getDNI();
+												}
+											}
+						
+											agenda.EliminarAlumno(DNI);
+						
+										}else if(agenda.BuscarAlumnoAp(Apellidos)==2){
+						
+											cout<<"Hay varios alumnos con esos apellidos, introduzca el DNI del alumno a modificar: "<<endl;
+											cin>>DNI;
+											if(agenda.BuscarAlumno(DNI)==false){
+						
+												cout<<"No existe ningún alumno con ese DNI"<<endl;
+						
+											}else if(agenda.BuscarAlumno(DNI)==true){
+						
+												agenda.EliminarAlumno(DNI);
+											}
+										}
+					
+									}else{
+					
+									cout<<"Opción incorrecta, debe ser 0 ó 1"<<endl;
+						
 								}
-						
-								agenda.EliminarAlumno(DNI);
-						
-							}else if(agenda.BuscarAlumnoAp(Apellidos)==2){
-						
-								cout<<"Hay varios alumnos con esos apellidos, introduzca el DNI del alumno a modificar: "<<endl;
-								cin>>DNI;
-								if(agenda.BuscarAlumno(DNI)==false){
-						
-									cout<<"No existe ningún alumno con ese DNI"<<endl;
-						
-								}else if(agenda.BuscarAlumno(DNI)==true){
-						
-									agenda.EliminarAlumno(DNI);
+					
+								}else{
+					
+									cout<<"Error, opción incorrecta, debe introducir 0 ó 1."<<endl;
 								}
 							}
-					
-						}else{
-					
-						cout<<"Opción incorrecta, debe ser 0 ó 1"<<endl;
-						
-					}
-					
-					}else{
-					
-						cout<<"Error, opción incorrecta, debe introducir 0 ó 1."<<endl;
-					}
-				}
-	         	break;
-         	case 4:
-    			if(agenda.Alumnos_.empty()){
+				         	break;
+			         	case 4:
+			    			if(agenda.Alumnos_.empty()){
 
-		 			cout<<"No hay ningún alumno en la base de datos"<<endl;
+					 			cout<<"No hay ningún alumno en la base de datos"<<endl;
 		
-    			}else{
+			    			}else{
 					
-					cout<<"¿Desea mostrar todos los alumnos(0), solo un alumno(1), o los alumnos de un grupo(2)?"<<endl;
-					cin>>resp;
-					if(resp==0){
+								cout<<"¿Desea mostrar todos los alumnos(0), solo un alumno(1), o los alumnos de un grupo(2)?"<<endl;
+								cin>>resp;
+								if(resp==0){
 				
-						agenda.MostrarTodos();
+									agenda.MostrarTodos();
 				
-					}else if(resp==1){
+								}else if(resp==1){
 						
-						cout<<"¿Desea buscar por DNI(0), por Apellidos(1), o por Email(2)?"<<endl;
-						cin>>resp;
-						if(resp==0){
+									cout<<"¿Desea buscar por DNI(0), por Apellidos(1), o por Email(2)?"<<endl;
+									cin>>resp;
+									if(resp==0){
 				
-							cout<<"Introduzca el DNI del alumno a mostrar: ";
-							cin>>DNI;
-							if(agenda.BuscarAlumno(DNI)==false){
+										cout<<"Introduzca el DNI del alumno a mostrar: ";
+										cin>>DNI;
+										if(agenda.BuscarAlumno(DNI)==false){
 					
-								cout<<"No existe ningún alumno con ese DNI"<<endl;
+											cout<<"No existe ningún alumno con ese DNI"<<endl;
 					
-							}else if(agenda.BuscarAlumno(DNI)==true){
+										}else if(agenda.BuscarAlumno(DNI)==true){
 					
-								agenda.MostrarAlumno(DNI);
-							}
+											agenda.MostrarAlumno(DNI);
+										}
 				
-						}else if(resp==1){
+									}else if(resp==1){
 				
-							cout<<"Introduzca los apellidos del alumno a mostrar: ";
-							cin.ignore();
-							getline(cin, Apellidos, '\n');
-							if(agenda.BuscarAlumnoAp(Apellidos)==0){
+										cout<<"Introduzca los apellidos del alumno a mostrar: ";
+										cin.ignore();
+										getline(cin, Apellidos, '\n');
+										if(agenda.BuscarAlumnoAp(Apellidos)==0){
 					
-								cout<<"No existe ningún alumno con esos apellidos"<<endl;
+											cout<<"No existe ningún alumno con esos apellidos"<<endl;
 					
-							}else if(agenda.BuscarAlumnoAp(Apellidos)==1){
+										}else if(agenda.BuscarAlumnoAp(Apellidos)==1){
 					
-								for(it=agenda.Alumnos_.begin();it!=agenda.Alumnos_.end();it++){
+											for(it=agenda.Alumnos_.begin();it!=agenda.Alumnos_.end();it++){
 	
-									if((*it).getApellidos()==Apellidos){
+												if((*it).getApellidos()==Apellidos){
 		
-										DNI=(*it).getDNI();
-									}
-								}
+													DNI=(*it).getDNI();
+												}
+											}
 					
-								agenda.MostrarAlumno(DNI);
+											agenda.MostrarAlumno(DNI);
 					
-							}else if(agenda.BuscarAlumnoAp(Apellidos)==2){
+										}else if(agenda.BuscarAlumnoAp(Apellidos)==2){
 					
-								cout<<"Hay varios alumnos con esos apellidos, introduzca el DNI del alumno a mostrar: "<<endl;
-								cin>>DNI;
-								if(agenda.BuscarAlumno(DNI)==false){
+											cout<<"Hay varios alumnos con esos apellidos, introduzca el DNI del alumno a mostrar: "<<endl;
+											cin>>DNI;
+											if(agenda.BuscarAlumno(DNI)==false){
 					
-									cout<<"No existe ningún alumno con ese DNI"<<endl;
+												cout<<"No existe ningún alumno con ese DNI"<<endl;
 					
-								}else if(agenda.BuscarAlumno(DNI)==true){
+											}else if(agenda.BuscarAlumno(DNI)==true){
 					
-									agenda.MostrarAlumno(DNI);
-								}
-							}
+												agenda.MostrarAlumno(DNI);
+											}
+										}
 				
-						}else if(resp==2){
+									}else if(resp==2){
 				
-							cout<<"Introduzca el email del alumno a mostrar: ";
-							cin>>Email;
-							if(agenda.BuscarAlumnoEm(Email)==false){
+										cout<<"Introduzca el email del alumno a mostrar: ";
+										cin>>Email;
+										if(agenda.BuscarAlumnoEm(Email)==false){
 					
-								cout<<"No existe ningún alumno con ese email"<<endl;
+											cout<<"No existe ningún alumno con ese email"<<endl;
 					
-							}else if(agenda.BuscarAlumnoEm(Email)==true){
+										}else if(agenda.BuscarAlumnoEm(Email)==true){
 					
-								for(it=agenda.Alumnos_.begin();it!=agenda.Alumnos_.end();it++){
+											for(it=agenda.Alumnos_.begin();it!=agenda.Alumnos_.end();it++){
 	
-									if((*it).getEmail()==Email){
+												if((*it).getEmail()==Email){
 		
-										DNI=(*it).getDNI();
+													DNI=(*it).getDNI();
+												}
+											}
+					
+											agenda.MostrarAlumno(DNI);
+										}
+				
+									}else{
+				
+										cout<<"Opción incorrecta, debe ser 0, 1 ó 2"<<endl;
 									}
+				
+								}else if(resp==2){
+					
+									agenda.MostrarGrupo();
+					
+								}else{
+				
+									cout<<"Error, opción incorrecta, debe introducir 0, 1 ó 2."<<endl;
 								}
-					
-								agenda.MostrarAlumno(DNI);
 							}
+			         	    break;
+			         	case 5:
+							if((*it2).getRol()==1){
 				
-						}else{
-				
-							cout<<"Opción incorrecta, debe ser 0, 1 ó 2"<<endl;
-						}
-				
-					}else if(resp==2){
+								p.CargarCopia(&agenda);
 					
-						agenda.MostrarGrupo();
+							}else{
 					
-					}else{
+								cout<<"Debe ser coordinador para acceder a esta función";
+							}
+			         	    break;
+			         	case 6:
+							if((*it2).getRol()==1){
+			
+								p.GuardarCopia(&agenda);
 				
-						cout<<"Error, opción incorrecta, debe introducir 0, 1 ó 2."<<endl;
-					}
+							}else{
+				
+								cout<<"Debe ser coordinador para acceder a esta función";
+							}
+			         	    break;
+			         	case 7: 
+			         	    p.CargarBD(&agenda);
+			         	    break;
+			         	case 8: 
+			         	    p.GuardarBD(&agenda);
+			         	    break;
+			         	case 9: 
+			         		exit(-1);
+							break;
+			       }
 				}
-         	    break;
-         	/*case 5: 
-         	    profesor.CargarFichero();
-         	    break;
-         	case 6: 
-         	    profesor.GuardarFichero();
-         	    break;
-         	case 7: 
-         	    profesor.CargarBD();
-         	    break;
-         	case 8: 
-         	    profesor.GuardarBD();
-         	    break;*/
-         	case 9: 
-         		exit(-1);
-				break;
-       }
+				
+			}else{
+				
+				cout<<"Contraseña incorrecta"<<endl;
+				exit(-1);
+			}
+		}
+	}
+	
+	if(encontrado==false){
+		
+		cout<<"No existe ningún profesor con ese ID"<<endl;
 	}
 }
