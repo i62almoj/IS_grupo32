@@ -1,16 +1,16 @@
-1. Para iniciar la aplicación:
+**1. Para iniciar la aplicación:**
 
 * ./MenuPrincipal
 
-2. Datos:
+**2. Datos:**
 
-    Coordinadores
+Coordinadores
 ___
 
 * ID: **1** Contraseña: **David**
 * ID: **2** Contraseña: **Antonio**
 
-    Ayudantes
+Ayudantes
 ___
 
 * ID: **3** Contraseña: **Irene**
