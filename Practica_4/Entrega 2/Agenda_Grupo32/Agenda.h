@@ -12,8 +12,6 @@ class Agenda {
 	
 	private:
 
-		
-
 	public:
 		
 		list<Alumno> Alumnos_;
