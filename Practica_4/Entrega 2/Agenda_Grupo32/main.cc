@@ -2,6 +2,9 @@
 #include <cstdlib>
 #include <list>
 #include <fstream>
+#include <cstring>
+#include <stdio.h>
+#include <string.h>
 #include "Alumno.h"
 #include "Profesor.h"
 #include "Agenda.h"
@@ -10,15 +13,15 @@ using namespace std;
 
 typedef struct profesor{
 	
-	string ID, Password;
+	char ID[10], Password[20];
 	int Rol;
 	
 }profe;
 
 int main(){
 
-	int opcion, resp, cont;
-	string DNI, Apellidos, Email, ID, Password;
+	int opcion, resp, cont, Grupo;
+	char DNI[20], Apellidos[50], Email[25], ID[10], Password[20];
 	Agenda agenda;
 	list<Alumno>::iterator it;
 	list<Profesor> Profesores_;
@@ -27,8 +30,11 @@ int main(){
 	ifstream fichero;
 	profe pro;
 	bool encontrado=false;
+	string nombreFichero;
 	
-	fichero.open("Profesores.bin", ios::in | ios::binary);
+	nombreFichero="Profesores.bin";
+	
+	fichero.open(nombreFichero.c_str(), ios::in | ios::binary);
 	
 	if(fichero.is_open()){
 			
@@ -116,7 +122,9 @@ int main(){
 					
 									cout<<"Introduzca los apellidos del alumno a modificar: ";
 									cin.ignore();
-									getline(cin, Apellidos, '\n');
+									cin.getline(Apellidos, sizeof(Apellidos));
+									//cin.ignore();
+									//getline(cin, Apellidos, '\n');
 									if(agenda.BuscarAlumnoAp(Apellidos)==0){
 						
 										cout<<"No existe ningún alumno con esos apellidos"<<endl;
@@ -127,7 +135,7 @@ int main(){
 		
 											if((*it).getApellidos()==Apellidos){
 			
-												DNI=(*it).getDNI();
+												strcpy(DNI,(*it).getDNI().c_str());
 											}
 										}
 						
@@ -184,7 +192,7 @@ int main(){
 									cin>>resp;
 									if(resp==0){
 					
-										cout<<"Introduzca el DNI del alumno a modificar: ";
+										cout<<"Introduzca el DNI del alumno a eliminar: ";
 										cin>>DNI;
 										if(agenda.BuscarAlumno(DNI)==false){
 						
@@ -197,9 +205,11 @@ int main(){
 					
 									}else if(resp==1){
 					
-										cout<<"Introduzca los apellidos del alumno a modificar: ";
+										cout<<"Introduzca los apellidos del alumno a eliminar: ";
 										cin.ignore();
-										getline(cin, Apellidos, '\n');
+										cin.getline(Apellidos, sizeof(Apellidos));
+										//cin.ignore();
+										//getline(cin, Apellidos, '\n');
 										if(agenda.BuscarAlumnoAp(Apellidos)==0){
 						
 											cout<<"No existe ningún alumno con esos apellidos"<<endl;
@@ -210,7 +220,7 @@ int main(){
 		
 												if((*it).getApellidos()==Apellidos){
 			
-													DNI=(*it).getDNI();
+													strcpy(DNI,(*it).getDNI().c_str());
 												}
 											}
 						
@@ -276,7 +286,9 @@ int main(){
 				
 										cout<<"Introduzca los apellidos del alumno a mostrar: ";
 										cin.ignore();
-										getline(cin, Apellidos, '\n');
+										cin.getline(Apellidos, sizeof(Apellidos));
+										//cin.ignore();
+										//getline(cin, Apellidos, '\n');
 										if(agenda.BuscarAlumnoAp(Apellidos)==0){
 					
 											cout<<"No existe ningún alumno con esos apellidos"<<endl;
@@ -287,7 +299,7 @@ int main(){
 	
 												if((*it).getApellidos()==Apellidos){
 		
-													DNI=(*it).getDNI();
+													strcpy(DNI,(*it).getDNI().c_str());
 												}
 											}
 					
@@ -321,7 +333,7 @@ int main(){
 	
 												if((*it).getEmail()==Email){
 		
-													DNI=(*it).getDNI();
+													strcpy(DNI,(*it).getDNI().c_str());
 												}
 											}
 					
@@ -334,8 +346,11 @@ int main(){
 									}
 				
 								}else if(resp==2){
+								
+									cout<<"Introduzca el número de grupo: ";
+									cin>>Grupo;
 					
-									agenda.MostrarGrupo();
+									agenda.MostrarGrupo(Grupo);
 					
 								}else{
 				
@@ -387,4 +402,6 @@ int main(){
 		
 		cout<<"No existe ningún profesor con ese ID"<<endl;
 	}
+	
+	return 0;
 }

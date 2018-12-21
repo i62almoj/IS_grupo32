@@ -25,7 +25,7 @@ class Agenda {
 		void EliminarTodos();
 		void MostrarAlumno(string DNI);
 		void MostrarTodos();
-		void MostrarGrupo();
+		void MostrarGrupo(int Grupo);
 };
 
 #endif

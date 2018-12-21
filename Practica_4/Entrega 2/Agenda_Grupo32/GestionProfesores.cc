@@ -1,19 +1,22 @@
 #include <iostream>
 #include <cstdlib>
 #include <list>
+#include <string>
+#include <cstring>
+#include <stdio.h>
 #include "Profesor.h"
 #include "Agenda.h"
 
 using namespace std;
 
-bool BuscarProfesor(string ID, Profesor *Ptr_Profesores_);
+bool BuscarProfesor(char ID[10], Profesor *Ptr_Profesores_);
 void AnadirProfesor(Profesor *Ptr_Profesores_);
 void MostrarTodos(Profesor *Ptr_Profesores_);
 void GuardarFichero(Profesor *Ptr_Profesores_);
 
 typedef struct profesor{
 	
-	string ID, Password;
+	char ID[10], Password[20];
 	int Rol;
 	
 }profe;
@@ -21,7 +24,7 @@ typedef struct profesor{
 int main(){
 
 	int opcion;
-	string ID, Password;
+	char ID[10], Password[20];
 	Profesor p;
 	
 	//p.Profesores_.clear();
@@ -60,7 +63,7 @@ int main(){
 	}
 }
 
-bool BuscarProfesor(string ID, Profesor *Ptr_Profesores_){
+bool BuscarProfesor(char ID[10], Profesor *Ptr_Profesores_){
 	
 	list<Profesor>::iterator it;
 	
@@ -77,7 +80,7 @@ bool BuscarProfesor(string ID, Profesor *Ptr_Profesores_){
 
 void AnadirProfesor(Profesor *Ptr_Profesores_){
 	
-	string ID, Password;
+	char ID[10], Password[20];
 	int Rol;
 	Profesor p;
 	ofstream fichero;
@@ -114,9 +117,9 @@ void AnadirProfesor(Profesor *Ptr_Profesores_){
 			//MostrarTodos(Ptr_Profesores_);
 		
 			for(it=Ptr_Profesores_->Profesores_.begin();it!=Ptr_Profesores_->Profesores_.end();it++){
-		
-				pro.ID=((*it).getID());
-				pro.Password=((*it).getPassword());
+				
+				strcpy(pro.ID,(*it).getID().c_str());
+				strcpy(pro.Password,(*it).getPassword().c_str());
 				pro.Rol=((*it).getRol());
 				
 				fichero.write((const char *)&pro, sizeof(pro));
@@ -138,8 +141,11 @@ void MostrarTodos(Profesor *Ptr_Profesores_){
 	ifstream fichero;
 	Profesor p;
 	profe pro;
+	string nombreFichero;
 	
-	fichero.open("Profesores.bin", ios::in | ios::binary);
+	nombreFichero="Profesores.bin";
+	
+	fichero.open(nombreFichero.c_str(), ios::in | ios::binary);
 	
 	if(fichero.is_open()){
 		

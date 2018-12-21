@@ -5,6 +5,8 @@
 #include <cstdlib>
 #include <list>
 #include <fstream>
+#include <stdio.h>
+#include <cstring>
 #include "Agenda.h"
 #include "Alumno.h"
 

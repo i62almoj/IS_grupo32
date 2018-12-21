@@ -145,12 +145,14 @@ void Agenda::AnadirAlumno(){
 
 void Agenda::ModificarAlumno(string DNI){
 
-	string DNInuevo, Nombre, Apellidos, Email, Direccion, Lid;
+	string DNInuevo, Nombre, Apellidos, Email, Direccion, Lid, resp, DNIlider;
 	int Telefono, CursoAlto, Grupo;
-	bool Lider, encontrado=false;
+	bool Lider, encontrado=false, silider=false, silider2=false;
 	float Nota;
 	
 	list<Alumno>::iterator it;
+	list<Alumno>::iterator it2;
+	list<Alumno>::iterator it3;
 	
 	it=Alumnos_.begin();
 	while(it!=Alumnos_.end() && encontrado==false){
@@ -183,17 +185,85 @@ void Agenda::ModificarAlumno(string DNI){
 			cout<<"Introduzca el nuevo grupo del alumno: ";
 			cin>>Grupo;
 			(*it).setGrupo(Grupo);
-			cout<<"Introduzca si es líder de su grupo o no el alumno(S/N): ";
-			cin>>Lid;
-			if(Lid=="S" || Lid=="s"){
-
-				Lider=true;
-
-			}else if(Lid=="N" || Lid=="n"){
-
-				Lider=false;
+			
+			it2=Alumnos_.begin();
+			while(it2!=Alumnos_.end() && silider==false){
+		
+				if((*it2).getGrupo()==Grupo){
+			
+					if((*it2).getLider()==true && (*it2).getDNI()!=(*it).getDNI()){
+					
+						silider=true;
+						
+					}else if((*it2).getLider()==true && (*it2).getDNI()==(*it).getDNI()){
+					
+						silider2=true;
+					}
+				}
+		
+				it2++;
 			}
-			(*it).setLider(Lider);
+		
+			if(silider==false && silider2==false){
+			
+				cout<<"Introduzca si es líder de su grupo o no el alumno(S/N): ";
+				cin>>Lid;
+				
+				if(Lid=="S" || Lid=="s"){
+
+					(*it).setLider(true);
+
+				}else if(Lid=="N" || Lid=="n"){
+
+					(*it).setLider(false);
+				}
+			
+			}else if(silider==true && silider2==false){
+			
+				cout<<"Ya existe un líder en ese grupo, ¿desea poner a este alumno como líder y quitar al otro? (S/N)"<<endl;
+				cin>>resp;
+				
+				if(resp=="S" || resp=="s"){
+				
+					it2--;
+					(*it2).setLider(false);
+
+					(*it).setLider(true);
+
+				}else if(resp=="N" || resp=="n"){
+
+					(*it).setLider(false);
+				}
+				
+			}else if(silider==false && silider2==true){
+			
+				cout<<"Introduzca si sigue siendo líder de su grupo o no el alumno(S/N): ";
+				cin>>Lid;
+				
+				if(Lid=="S" || Lid=="s"){
+
+				}else if(Lid=="N" || Lid=="n"){
+					
+					MostrarGrupo(Grupo);
+					
+					cout<<"Escriba el DNI del que será el nuevo líder:"<<endl;
+					cin>>DNIlider;
+					
+					it3=Alumnos_.begin();
+					while(it3!=Alumnos_.end()){
+		
+						if((*it3).getDNI()==DNIlider){
+			
+							(*it3).setLider(true);
+						}
+		
+						it3++;
+					}
+					
+					(*it).setLider(false);
+				}
+			}
+			
 			cout<<"Introduzca la nota del alumno: ";
 			cin>>Nota;
 			(*it).setNota(Nota);
@@ -208,15 +278,61 @@ void Agenda::ModificarAlumno(string DNI){
 void Agenda::EliminarAlumno(string DNI){
 	
 	list<Alumno>::iterator it;
-
-    for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
+	list<Alumno>::iterator it2;
+	bool encontrado=false;
+	int Grupo;
+	string DNIlider;
+	
+	it=Alumnos_.begin();
+	while(it!=Alumnos_.end() && encontrado==false){
+	
+		if((*it).getDNI()==DNI){
+		
+			if((*it).getLider()==true){
+			
+				Grupo=(*it).getGrupo();
+			
+				MostrarGrupo(Grupo);
+					
+				cout<<"Escriba el DNI del que será el nuevo líder:"<<endl;
+				cin>>DNIlider;
+					
+				it2=Alumnos_.begin();
+				while(it2!=Alumnos_.end()){
+		
+					if((*it2).getGrupo()==Grupo && (*it2).getDNI()==DNIlider){
+			
+						(*it2).setLider(true);
+					}
+		
+					it2++;
+				}
+			
+				Alumnos_.erase(it);
+				cout<<"Alumno eliminado"<<endl;
+			  
+				encontrado=true;
+				
+			}else{
+			
+				Alumnos_.erase(it);
+				cout<<"Alumno eliminado"<<endl;
+			  
+				encontrado=true;
+			}
+        }
+	
+		it++;
+	}
+	
+    /*for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 
          if((*it).getDNI()==DNI){
 			 
               Alumnos_.erase(it);
 			  cout<<"Alumno eliminado"<<endl;
          }
-    }
+    }*/
 }
 
 void Agenda::EliminarTodos(){
@@ -288,14 +404,11 @@ void Agenda::MostrarTodos(){
 	}
 }
 
-void Agenda::MostrarGrupo(){
+void Agenda::MostrarGrupo(int Grupo){
 	
 	list<Alumno>::iterator it;
 	string Lider;
-	int cont=1, Grupo;
-
-	cout<<"Introduzca el número de grupo: ";
-	cin>>Grupo;
+	int cont=1;
 	
 	for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
