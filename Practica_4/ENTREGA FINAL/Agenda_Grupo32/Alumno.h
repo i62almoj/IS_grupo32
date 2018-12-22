@@ -9,19 +9,12 @@ using namespace std;
 class Alumno{
 	
 	private:
-		string DNI_,Nombre_,Apellidos_,Email_,Direccion_;
-		int Telefono_,CursoAlto_,Grupo_;
+	
+		string DNI_, Nombre_, Apellidos_, Email_, Direccion_, Nota_;
+		int Telefono_, CursoAlto_, Grupo_;
 		bool Lider_;
-		float Nota_;
 
-	public:	
-
-		Alumno(string DNI, string Nombre,string Apellidos, string Email, string Direccion, int Telefono,
-		int CursoAlto, int Grupo,bool Lider, float Nota);
-		
-		Alumno(){};
-
-		
+	public:
 
 //----OBSERVADORES-----
 
@@ -49,6 +42,11 @@ class Alumno{
 		{
 			return Direccion_;
 		}
+		
+		inline string getNota() const
+		{
+			return Nota_;
+		}
 
 		inline int getTelefono() const
 		{
@@ -68,11 +66,6 @@ class Alumno{
 		inline bool getLider() const
 		{
 			return Lider_;
-		}
-
-		inline float getNota() const
-		{
-			return Nota_;
 		}
 
 //------MODIFICADORES-----
@@ -97,6 +90,10 @@ class Alumno{
 		{
 			Direccion_=Direccion;
 		}
+		inline void setNota(string Nota)
+		{
+			Nota_=Nota;
+		}
 		inline void setTelefono(int Telefono)
 		{
 			Telefono_=Telefono;
@@ -112,10 +109,6 @@ class Alumno{
 		inline void setLider(bool Lider)
 		{
 			Lider_=Lider;
-		}
-		inline void setNota(float Nota)
-		{
-			Nota_=Nota;
 		}
 
 };

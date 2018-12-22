@@ -61,10 +61,9 @@ void Agenda::AnadirAlumno(){
 	
 	Alumno a;
 	
-	string DNI, Nombre, Apellidos, Email, Direccion, Lid;
+	string DNI, Nombre, Apellidos, Email, Direccion, Lid, resp, Nota;
 	int Telefono, CursoAlto, Grupo;
 	bool Lider, silider=false;
-	float Nota;
 	
 	list<Alumno>::iterator it;
 
@@ -127,15 +126,27 @@ void Agenda::AnadirAlumno(){
 			a.setLider(Lider);
 			
 		}else{
+		
+			cout<<"\nAVISO: Como ya existe un líder en ese grupo, se añadirá automáticamente a este alumno sin ser líder. Si quiere modificarlo, vaya a la opción de modificar en el menú."<<endl;
 			
 			a.setLider(false);
 		}
 		
-		cout<<"Introduzca la nota del alumno: ";
-		cin>>Nota;
-		a.setNota(Nota);
+		cout<<"¿Quiere introducir la nota del alumno? (S/N)"<<endl;
+		cin>>resp;
+		if(resp=="S" || resp=="s"){
+		
+			cout<<"Introduzca la nota del alumno: ";
+			cin>>Nota;
+			a.setNota(Nota);
+			
+		}else if(resp=="N" || resp=="n"){
+
+			a.setNota("");
+		}
 		
 		Alumnos_.push_back(a);
+		
 		
 	}else{
 		
@@ -145,10 +156,9 @@ void Agenda::AnadirAlumno(){
 
 void Agenda::ModificarAlumno(string DNI){
 
-	string DNInuevo, Nombre, Apellidos, Email, Direccion, Lid, resp, DNIlider;
+	string DNInuevo, Nombre, Apellidos, Email, Direccion, Lid, resp, DNIlider, Nota;
 	int Telefono, CursoAlto, Grupo;
 	bool Lider, encontrado=false, silider=false, silider2=false;
-	float Nota;
 	
 	list<Alumno>::iterator it;
 	list<Alumno>::iterator it2;
@@ -264,9 +274,18 @@ void Agenda::ModificarAlumno(string DNI){
 				}
 			}
 			
-			cout<<"Introduzca la nota del alumno: ";
-			cin>>Nota;
-			(*it).setNota(Nota);
+			cout<<"¿Quiere introducir la nota del alumno? (S/N)"<<endl;
+			cin>>resp;
+			if(resp=="S" || resp=="s"){
+		
+				cout<<"Introduzca la nueva nota del alumno: ";
+				cin>>Nota;
+				(*it).setNota(Nota);
+			
+			}else if(resp=="N" || resp=="n"){
+
+				(*it).setNota("");
+			}
 			
 			encontrado=true;
 		}
@@ -291,26 +310,27 @@ void Agenda::EliminarAlumno(string DNI){
 			if((*it).getLider()==true){
 			
 				Grupo=(*it).getGrupo();
-			
-				MostrarGrupo(Grupo);
-					
-				cout<<"Escriba el DNI del que será el nuevo líder:"<<endl;
-				cin>>DNIlider;
-					
-				it2=Alumnos_.begin();
-				while(it2!=Alumnos_.end()){
-		
-					if((*it2).getGrupo()==Grupo && (*it2).getDNI()==DNIlider){
-			
-						(*it2).setLider(true);
-					}
-		
-					it2++;
-				}
-			
+				
 				Alumnos_.erase(it);
 				cout<<"Alumno eliminado"<<endl;
-			  
+			
+				if(MostrarGrupo(Grupo)!=1){
+				
+					cout<<"Escriba el DNI del que será el nuevo líder:"<<endl;
+					cin>>DNIlider;
+					
+					it2=Alumnos_.begin();
+					while(it2!=Alumnos_.end()){
+		
+						if((*it2).getGrupo()==Grupo && (*it2).getDNI()==DNIlider){
+			
+							(*it2).setLider(true);
+						}
+		
+						it2++;
+					}
+				}
+				
 				encontrado=true;
 				
 			}else{
@@ -324,15 +344,6 @@ void Agenda::EliminarAlumno(string DNI){
 	
 		it++;
 	}
-	
-    /*for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
-
-         if((*it).getDNI()==DNI){
-			 
-              Alumnos_.erase(it);
-			  cout<<"Alumno eliminado"<<endl;
-         }
-    }*/
 }
 
 void Agenda::EliminarTodos(){
@@ -382,29 +393,33 @@ void Agenda::MostrarAlumno(string DNI){
 void Agenda::MostrarTodos(){
 
 	list<Alumno>::iterator it;
-	string Lider;
+	string Lider, resp;
 	int cont=1;
 	
 	for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
 		if((*it).getLider()==true){
 			
-			Lider="Sí";
+			Lider="SÍ";
+			
+			cout<<cont<<".- ~~~~~ DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<
+			" - Dirección: "<<(*it).getDireccion()<<" - Teléfono: "<<(*it).getTelefono()<<" - Curso más alto: "<<(*it).getCursoAlto()<<
+				" - Grupo: "<<(*it).getGrupo()<<" - ¿Líder?: "<<Lider<<" - Nota: "<<(*it).getNota()<<" ~~~~~"<<endl;
 				
 		}else{
 				
 			Lider="No";
-		}
 			
-		cout<<cont<<".- DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<
+			cout<<cont<<".- DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<
 			" - Dirección: "<<(*it).getDireccion()<<" - Teléfono: "<<(*it).getTelefono()<<" - Curso más alto: "<<(*it).getCursoAlto()<<
 				" - Grupo: "<<(*it).getGrupo()<<" - ¿Líder?: "<<Lider<<" - Nota: "<<(*it).getNota()<<endl;
+		}
 		
 		cont++;
 	}
 }
 
-void Agenda::MostrarGrupo(int Grupo){
+int Agenda::MostrarGrupo(int Grupo){
 	
 	list<Alumno>::iterator it;
 	string Lider;
@@ -430,4 +445,6 @@ void Agenda::MostrarGrupo(int Grupo){
 			cont++;
 		}
 	}
+	
+	return cont;
 }

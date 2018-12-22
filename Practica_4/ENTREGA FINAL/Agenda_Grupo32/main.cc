@@ -123,8 +123,6 @@ int main(){
 									cout<<"Introduzca los apellidos del alumno a modificar: ";
 									cin.ignore();
 									cin.getline(Apellidos, sizeof(Apellidos));
-									//cin.ignore();
-									//getline(cin, Apellidos, '\n');
 									if(agenda.BuscarAlumnoAp(Apellidos)==0){
 						
 										cout<<"No existe ningún alumno con esos apellidos"<<endl;
@@ -208,8 +206,6 @@ int main(){
 										cout<<"Introduzca los apellidos del alumno a eliminar: ";
 										cin.ignore();
 										cin.getline(Apellidos, sizeof(Apellidos));
-										//cin.ignore();
-										//getline(cin, Apellidos, '\n');
 										if(agenda.BuscarAlumnoAp(Apellidos)==0){
 						
 											cout<<"No existe ningún alumno con esos apellidos"<<endl;
@@ -228,7 +224,7 @@ int main(){
 						
 										}else if(agenda.BuscarAlumnoAp(Apellidos)==2){
 						
-											cout<<"Hay varios alumnos con esos apellidos, introduzca el DNI del alumno a modificar: "<<endl;
+											cout<<"Hay varios alumnos con esos apellidos, introduzca el DNI del alumno a eliminar: "<<endl;
 											cin>>DNI;
 											if(agenda.BuscarAlumno(DNI)==false){
 						
@@ -287,8 +283,6 @@ int main(){
 										cout<<"Introduzca los apellidos del alumno a mostrar: ";
 										cin.ignore();
 										cin.getline(Apellidos, sizeof(Apellidos));
-										//cin.ignore();
-										//getline(cin, Apellidos, '\n');
 										if(agenda.BuscarAlumnoAp(Apellidos)==0){
 					
 											cout<<"No existe ningún alumno con esos apellidos"<<endl;

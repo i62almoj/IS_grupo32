@@ -4,10 +4,9 @@ using namespace std;
 
 typedef struct alumno{
 	
-	char DNI[20], Nombre[20], Apellidos[50], Email[20], Direccion[50];
+	char DNI[20], Nombre[20], Apellidos[50], Email[20], Direccion[50], Nota[5];
 	int Telefono, CursoAlto, Grupo;
 	bool Lider;
-	float Nota;
 	
 }alu;
 
@@ -42,11 +41,11 @@ void Profesor::CargarCopia(Agenda *Ptr_Agenda_){
 				a.setApellidos(al.Apellidos);
 				a.setEmail(al.Email);
 				a.setDireccion(al.Direccion);
+				a.setNota(al.Nota);
 				a.setTelefono(al.Telefono);
 				a.setCursoAlto(al.CursoAlto);
 				a.setGrupo(al.Grupo);
 				a.setLider(al.Lider);
-				a.setNota(al.Nota);
 				
 				Ptr_Agenda_->Alumnos_.push_back(a);
 			}
@@ -86,11 +85,11 @@ void Profesor::GuardarCopia(Agenda *Ptr_Agenda_){
 				strcpy(al.Apellidos,(*it).getApellidos().c_str());
 				strcpy(al.Email,(*it).getEmail().c_str());
 				strcpy(al.Direccion,(*it).getDireccion().c_str());
+				strcpy(al.Nota,(*it).getNota().c_str());
 				al.Telefono=((*it).getTelefono());
 				al.CursoAlto=((*it).getCursoAlto());
 				al.Grupo=((*it).getGrupo());
 				al.Lider=((*it).getLider());
-				al.Nota=((*it).getNota());
 			
 				fichero.write((const char *)&al, sizeof(al));
 			}
@@ -130,11 +129,11 @@ void Profesor::CargarBD(Agenda *Ptr_Agenda_){
 				a.setApellidos(al.Apellidos);
 				a.setEmail(al.Email);
 				a.setDireccion(al.Direccion);
+				a.setNota(al.Nota);
 				a.setTelefono(al.Telefono);
 				a.setCursoAlto(al.CursoAlto);
 				a.setGrupo(al.Grupo);
 				a.setLider(al.Lider);
-				a.setNota(al.Nota);
 				
 				Ptr_Agenda_->Alumnos_.push_back(a);
 			}
@@ -168,11 +167,11 @@ void Profesor::GuardarBD(Agenda *Ptr_Agenda_){
 				strcpy(al.Apellidos,(*it).getApellidos().c_str());
 				strcpy(al.Email,(*it).getEmail().c_str());
 				strcpy(al.Direccion,(*it).getDireccion().c_str());
+				strcpy(al.Nota,(*it).getNota().c_str());
 				al.Telefono=((*it).getTelefono());
 				al.CursoAlto=((*it).getCursoAlto());
 				al.Grupo=((*it).getGrupo());
 				al.Lider=((*it).getLider());
-				al.Nota=((*it).getNota());
 			
 				fichero.write((const char *)&al, sizeof(al));
 			}
