@@ -14,7 +14,7 @@
 
 **Flujo principal:**
 
-1. El caso de uso empieza cuando el usuario realiza una consulata a la base de datos.
+1. El caso de uso empieza cuando el usuario realiza una consulta a la base de datos.
 2. El sistema realiza la búsqueda de la información solicitada y devuelve los resultados.
 
 **Postcondiciones:**

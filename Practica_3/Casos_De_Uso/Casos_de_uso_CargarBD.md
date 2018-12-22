@@ -14,7 +14,7 @@
 
 **Flujo principal:**
 
-1. El caso de uso empieza cuando el usuario solicita añadir, modificar, eliminar o mostrar en la base de datos.
+1. El caso de uso empieza cuando el usuario solicita cargar la base de datos para añadir, modificar, eliminar o mostrar sobre ella.
 
 **Postcondiciones:**
 

@@ -14,7 +14,7 @@
 
 **Flujo principal:**
 
-1. El caso de uso empieza cuando el usuario modifica el fichero.
+1. El caso de uso empieza cuando el usuario tiene modificaciones para guardar en una copia de seguridad.
 
 **Postcondiciones:**
 
@@ -22,4 +22,4 @@
 
 **Flujos alternativos:**
 
-2. a. Si el fichero no existe, la aplicación muestra un mensaje de error y pide crear el fichero.
+2. a. Si no hay datos nuevos para guardar, el sistema muestra un mensaje de error y vuelve al menú principal.

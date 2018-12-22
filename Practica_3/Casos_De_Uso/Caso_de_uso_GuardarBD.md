@@ -14,7 +14,7 @@
 
 **Flujo principal:**
 
-1. El caso de uso empieza cuando el usuario modifica la base de datos.
+1. El caso de uso empieza cuando el usuario tiene modificaciones para guardar en la base de datos.
 
 **Postcondiciones:**
 
@@ -22,4 +22,4 @@
 
 **Flujos alternativos:**
 
-2. a. Si la base de datos no existe, la aplicación muestra un mensaje de error y vuelve al menú principal.
+2. a. Si no hay datos nuevos para guardar, la aplicación muestra un mensaje de error y vuelve al menú principal.
