@@ -2,6 +2,9 @@
 
 El profesorado de la asignatura de Ingeniería del Software quiere informatizar los datos de contacto de los alumnos en un programa informático que guarde esta información.
 
+Además, se quiere considerar la posibilidad de que entren diferentes profesores (y que usen credenciales – fichero binario).
+Se crearán dos roles de profesor: coordinador y ayudante. Las tareas son las mismas para ambos roles, a excepción del trabajo con las copias de seguridad, que únicamente las hará el coordinador.
+
 ## PARTES INTERESADAS
 
 * **Profesor**
