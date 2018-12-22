@@ -34,3 +34,14 @@ ___
 
   1. Reorganización en la distribución horaria del proyecto, así como de las horas totales del mismo.
   2. Replanteamiento del código y realización del nuevo código actualizado.
+
+Semana 4
+___
+
+* Fallos:
+
+  Nos encontramos con varios problemas a la hora de poder ejecutar el código.
+
+* Soluciones: 
+  
+  Dividimos el trabajo para investigar la causa del fallo.
