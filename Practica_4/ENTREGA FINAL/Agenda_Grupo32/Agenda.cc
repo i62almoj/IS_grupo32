@@ -76,98 +76,106 @@ void Agenda::AnadirAlumno(){
 	bool Lider, silider=false;
 	
 	list<Alumno>::iterator it;
-
-	cout<<"Introduzca el DNI del alumno: ";
-	cin>>DNI;
 	
-	//Comprobamos que no exista ya el alumno
-	if(BuscarAlumno(DNI)==false){
+	//Compruebo que no haya ya más de 150 alumnos en la lista
+	if(Alumnos_.size()<=150){
+	
+		cout<<"Introduzca el DNI del alumno: ";
+		cin>>DNI;
 		
-		a.setDNI(DNI);
-		cout<<"Introduzca el nombre del alumno: ";
-		cin>>Nombre;
-		a.setNombre(Nombre);
-		cout<<"Introduzca los apellidos del alumno: ";
-		cin.ignore();
-		getline(cin, Apellidos, '\n');
-		a.setApellidos(Apellidos);
-		cout<<"Introduzca el email del alumno: ";
-		cin>>Email;
-		a.setEmail(Email);
-		cout<<"Introduzca la dirección del alumno: ";
-		cin.ignore();
-		getline(cin, Direccion, '\n');
-		a.setDireccion(Direccion);
-		cout<<"Introduzca el teléfono del alumno: ";
-		cin>>Telefono;
-		a.setTelefono(Telefono);
-		cout<<"Introduzca el curso más alto matriculado del alumno: ";
-		cin>>CursoAlto;
-		a.setCursoAlto(CursoAlto);
-		cout<<"Introduzca el grupo del alumno: ";
-		cin>>Grupo;
-		a.setGrupo(Grupo);
-		
-		//Comprobamos si ya existe un líder en ese grupo
-		it=Alumnos_.begin();
-		while(it!=Alumnos_.end() && silider==false){
-		
-			if((*it).getGrupo()==Grupo){
+		//Comprobamos que no exista ya el alumno
+		if(BuscarAlumno(DNI)==false){
 			
-				if((*it).getLider()==true){
-					
-					silider=true;
+			a.setDNI(DNI);
+			cout<<"Introduzca el nombre del alumno: ";
+			cin>>Nombre;
+			a.setNombre(Nombre);
+			cout<<"Introduzca los apellidos del alumno: ";
+			cin.ignore();
+			getline(cin, Apellidos, '\n');
+			a.setApellidos(Apellidos);
+			cout<<"Introduzca el email del alumno: ";
+			cin>>Email;
+			a.setEmail(Email);
+			cout<<"Introduzca la dirección del alumno: ";
+			cin.ignore();
+			getline(cin, Direccion, '\n');
+			a.setDireccion(Direccion);
+			cout<<"Introduzca el teléfono del alumno: ";
+			cin>>Telefono;
+			a.setTelefono(Telefono);
+			cout<<"Introduzca el curso más alto matriculado del alumno: ";
+			cin>>CursoAlto;
+			a.setCursoAlto(CursoAlto);
+			cout<<"Introduzca el grupo del alumno: ";
+			cin>>Grupo;
+			a.setGrupo(Grupo);
+			
+			//Comprobamos si ya existe un líder en ese grupo
+			it=Alumnos_.begin();
+			while(it!=Alumnos_.end() && silider==false){
+			
+				if((*it).getGrupo()==Grupo){
+				
+					if((*it).getLider()==true){
+						
+						silider=true;
+					}
 				}
-			}
-		
-			it++;
-		}
-		
-		//Si no había ningún líder, pregunta si quieres poner a este alumno como tal
-		if(silider==false){
 			
-			cout<<"Introduzca si es líder de su grupo o no el alumno(S/N): ";
-			cin>>Lid;
-			if(Lid=="S" || Lid=="s"){
-
-				Lider=true;
-
-			}else if(Lid=="N" || Lid=="n"){
-
-				Lider=false;
+				it++;
 			}
-			a.setLider(Lider);
 			
-		//Si ya existía un líder
+			//Si no había ningún líder, pregunta si quieres poner a este alumno como tal
+			if(silider==false){
+				
+				cout<<"Introduzca si es líder de su grupo o no el alumno(S/N): ";
+				cin>>Lid;
+				if(Lid=="S" || Lid=="s"){
+
+					Lider=true;
+
+				}else if(Lid=="N" || Lid=="n"){
+
+					Lider=false;
+				}
+				a.setLider(Lider);
+				
+			//Si ya existía un líder
+			}else{
+			
+				cout<<"\nAVISO: Como ya existe un líder en ese grupo, se añadirá automáticamente a este alumno sin ser líder. Si quiere modificarlo, vaya a la opción de modificar en el menú."<<endl;
+				
+				a.setLider(false);
+			}
+			
+			//Pregunta si quiere introducir la nota, ya que ésta no es obligatoria
+			cout<<"¿Quiere introducir la nota del alumno? (S/N)"<<endl;
+			cin>>resp;
+			if(resp=="S" || resp=="s"){
+			
+				cout<<"Introduzca la nota del alumno: ";
+				cin>>Nota;
+				a.setNota(Nota);
+				
+			//Si no quiere introducir la nota, se quedará en blanco
+			}else if(resp=="N" || resp=="n"){
+
+				a.setNota("");
+			}
+			
+			//Actualizamos el alumno modificado en la lista
+			Alumnos_.push_back(a);
+			
 		}else{
-		
-			cout<<"\nAVISO: Como ya existe un líder en ese grupo, se añadirá automáticamente a este alumno sin ser líder. Si quiere modificarlo, vaya a la opción de modificar en el menú."<<endl;
 			
-			a.setLider(false);
+			cout<<"ERROR: Ya existe un alumno con ese DNI."<<endl;
 		}
 		
-		//Pregunta si quiere introducir la nota, ya que ésta no es obligatoria
-		cout<<"¿Quiere introducir la nota del alumno? (S/N)"<<endl;
-		cin>>resp;
-		if(resp=="S" || resp=="s"){
-		
-			cout<<"Introduzca la nota del alumno: ";
-			cin>>Nota;
-			a.setNota(Nota);
-			
-		//Si no quiere introducir la nota, se quedará en blanco
-		}else if(resp=="N" || resp=="n"){
-
-			a.setNota("");
-		}
-		
-		//Actualizamos el alumno modificado en la lista
-		Alumnos_.push_back(a);
-		
-		
+	//Máximo de alumnos
 	}else{
-		
-		cout<<"ERROR: Ya existe un alumno con ese DNI."<<endl;
+	
+		cout<<"NO ES POSIBLE AÑADIR MÁS ALUMNOS. Esta agenda ya contiene 150 alumnos."<<endl;
 	}
 }
 
@@ -788,16 +796,18 @@ void Agenda::MostrarTodos(int tipo1, int tipo2){
 			cont++;
 		}
 		
+		//Final del HTML
+		fichero << "</body></html>";
+		//Cerramos el fichero
+		fichero.close();
+		
+		cout<<"SE HA GENERADO UN HTML EN LA CARPETA. Puede acceder a él cuando desee."<<endl;
+		
 		//system(nombreFichero);
 	
 	}else if(resp=="N" || resp=="n"){
 	
 	}
-
-    //Final del HTML
-    fichero << "</body></html>";
-    //Cerramos el fichero
-    fichero.close();
 }
 
 //Función para mostrar los alumnos de un grupo, devolverá el número de alumnos que hay en ese grupo

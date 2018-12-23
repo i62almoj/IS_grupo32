@@ -76,6 +76,7 @@ void Profesor::GuardarCopia(Agenda *Ptr_Agenda_){
 	list<Alumno>::iterator it;
 	string nomb, nombreFichero;
 	alu al;
+	int contador=0;
 	
 	//Comprobamos que la lista no esté vacía, ya que eso sería que no hay nada que guardar
 	if(!Ptr_Agenda_->Alumnos_.empty()){
@@ -92,8 +93,8 @@ void Profesor::GuardarCopia(Agenda *Ptr_Agenda_){
 		//Si el fichero se ha abierto correctamente
 		if(fichero.is_open()){
 		
-			//Vamos recorriendo la lista
-			for(it=Ptr_Agenda_->Alumnos_.begin();it!=Ptr_Agenda_->Alumnos_.end();it++){
+			//Vamos recorriendo la lista y compruebo que no se añadan más de 150 alumnos
+			for(it=Ptr_Agenda_->Alumnos_.begin();it!=Ptr_Agenda_->Alumnos_.end() && contador<=150;it++){
 				
 				strcpy(al.DNI,(*it).getDNI().c_str());
 				strcpy(al.Nombre,(*it).getNombre().c_str());
@@ -108,10 +109,18 @@ void Profesor::GuardarCopia(Agenda *Ptr_Agenda_){
 			
 				//Se va escribiendo en el fichero cada uno de los alumnos existentes
 				fichero.write((const char *)&al, sizeof(al));
+				
+				contador++;
 			}
 		
 			//Cerramos el fichero
 			fichero.close();
+			
+			//Máximo de alumnos
+			if(contador==150){
+			
+				cout<<"NO ES POSIBLE AÑADIR MÁS ALUMNOS. Esta agenda ya contiene 150 alumnos."<<endl;
+			}
 		}
 		
 	}else{
@@ -178,6 +187,7 @@ void Profesor::GuardarBD(Agenda *Ptr_Agenda_){
 	Alumno a;
 	list<Alumno>::iterator it;
 	alu al;
+	int contador=0;
 	
 	//Comprobamos que la lista no esté vacía, ya que eso sería que no hay nada que guardar
 	if(!Ptr_Agenda_->Alumnos_.empty()){
@@ -188,8 +198,8 @@ void Profesor::GuardarBD(Agenda *Ptr_Agenda_){
 		//Si el fichero se ha abierto correctamente
 		if(fichero.is_open()){
 		
-			//Vamos recorriendo la lista
-			for(it=Ptr_Agenda_->Alumnos_.begin();it!=Ptr_Agenda_->Alumnos_.end();it++){
+			//Vamos recorriendo la lista y compruebo que no se añadan más de 150 alumnos
+			for(it=Ptr_Agenda_->Alumnos_.begin();it!=Ptr_Agenda_->Alumnos_.end() && contador<=150;it++){
 				
 				strcpy(al.DNI,(*it).getDNI().c_str());
 				strcpy(al.Nombre,(*it).getNombre().c_str());
@@ -208,6 +218,12 @@ void Profesor::GuardarBD(Agenda *Ptr_Agenda_){
 		
 			//Cerramos el fichero
 			fichero.close();
+			
+			//Máximo de alumnos
+			if(contador==150){
+			
+				cout<<"NO ES POSIBLE AÑADIR MÁS ALUMNOS. Esta agenda ya contiene 150 alumnos."<<endl;
+			}
 		}
 		
 	}else{
