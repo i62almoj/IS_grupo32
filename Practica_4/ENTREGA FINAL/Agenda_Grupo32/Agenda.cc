@@ -427,34 +427,287 @@ void Agenda::MostrarAlumno(string DNI){
 }
 
 //Función para mostrar todos los alumnos
-void Agenda::MostrarTodos(){
+void Agenda::MostrarTodos(int tipo){
 
 	list<Alumno>::iterator it;
 	string Lider, resp;
-	int cont=1;
+	int cont=1, curso1, curso2, grupo1, grupo2, j=0;
 	ofstream fichero;
+	vector<string> nombres_, apellidos_, dni_;
+	vector<int> cursos_, cursosaux_, grupos_, gruposaux_, nombresaux_, apellidosaux_, dniaux_;
+	string nombre1, nombre2, apellido1, apellido2, dni1, dni2;
+	bool encontrado=false;
+	//char nombreFichero[20]="firefox Lista.html";
 	
-	for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
+	//Ordenar por nombre
+	if(tipo==0){
+	
+		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
-		//Si el alumno a mostrar es líder saldrá de forma especial
-		if((*it).getLider()==true){
-			
-			Lider="SI";
-			
-			cout<<cont<<".- ~~~~~ DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<
-			" - Dirección: "<<(*it).getDireccion()<<" - Teléfono: "<<(*it).getTelefono()<<" - Curso más alto: "<<(*it).getCursoAlto()<<
-				" - Grupo: "<<(*it).getGrupo()<<" - ¿Líder?: "<<Lider<<" - Nota: "<<(*it).getNota()<<" ~~~~~"<<endl;
-				
-		}else{
-				
-			Lider="No";
-			
-			cout<<cont<<".- DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<
-			" - Dirección: "<<(*it).getDireccion()<<" - Teléfono: "<<(*it).getTelefono()<<" - Curso más alto: "<<(*it).getCursoAlto()<<
-				" - Grupo: "<<(*it).getGrupo()<<" - ¿Líder?: "<<Lider<<" - Nota: "<<(*it).getNota()<<endl;
+			nombres_.push_back((*it).getNombre());
 		}
 		
-		cont++;
+		sort(nombres_.begin(), nombres_.end());
+		
+		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
+		
+			nombresaux_.push_back(0);
+		}
+		nombresaux_.push_back(0);
+		
+		for(int i=0;i<nombres_.size();i++){
+		
+			encontrado=false;
+			j=0;
+		
+			for(it=Alumnos_.begin();it!=Alumnos_.end() && encontrado==false;it++){
+			
+				j++;
+			
+				nombre1=(*it).getNombre();
+      			nombre2=nombres_[i];
+      			
+      			if(!(nombre1.compare(nombre2)) && nombresaux_[j]==0) {
+      			
+      				encontrado=true;
+      				
+      				nombresaux_[j]=1;
+				
+					//Si el alumno a mostrar es líder saldrá de forma especial
+					if((*it).getLider()==true){
+			
+						Lider="SI";
+			
+						cout<<cont<<".- ~~~~~ DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<" - Dirección: "<<(*it).getDireccion()<<" - Teléfono: "<<(*it).getTelefono()<<" - Curso más alto: "<<(*it).getCursoAlto()<<" - Grupo: "<<(*it).getGrupo()<<" - ¿Líder?: "<<Lider<<" - Nota: "<<(*it).getNota()<<" ~~~~~"<<endl;
+				
+					}else{
+				
+						Lider="No";
+			
+						cout<<cont<<".- DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<" - Dirección: "<<(*it).getDireccion()<<" - Teléfono: "<<(*it).getTelefono()<<" - Curso más alto: "<<(*it).getCursoAlto()<<" - Grupo: "<<(*it).getGrupo()<<" - ¿Líder?: "<<Lider<<" - Nota: "<<(*it).getNota()<<endl;
+						
+					}
+		
+					cont++;
+				}
+			}
+		}
+		
+	//Ordenar por apellidos
+	}else if(tipo==1){
+	
+		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
+		
+			apellidos_.push_back((*it).getApellidos());
+		}
+		
+		sort(apellidos_.begin(), apellidos_.end());
+		
+		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
+		
+			apellidosaux_.push_back(0);
+		}
+		apellidosaux_.push_back(0);
+		
+		for(int i=0;i<apellidos_.size();i++){
+		
+			encontrado=false;
+			j=0;
+		
+			for(it=Alumnos_.begin();it!=Alumnos_.end() && encontrado==false;it++){
+			
+				j++;
+			
+				apellido1=(*it).getApellidos();
+      			apellido2=apellidos_[i];
+      			
+      			if(!(apellido1.compare(apellido2)) && apellidosaux_[j]==0) {
+      			
+      				encontrado=true;
+      				
+      				apellidosaux_[j]=1;
+				
+					//Si el alumno a mostrar es líder saldrá de forma especial
+					if((*it).getLider()==true){
+			
+						Lider="SI";
+			
+						cout<<cont<<".- ~~~~~ DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<" - Dirección: "<<(*it).getDireccion()<<" - Teléfono: "<<(*it).getTelefono()<<" - Curso más alto: "<<(*it).getCursoAlto()<<" - Grupo: "<<(*it).getGrupo()<<" - ¿Líder?: "<<Lider<<" - Nota: "<<(*it).getNota()<<" ~~~~~"<<endl;
+				
+					}else{
+				
+						Lider="No";
+			
+						cout<<cont<<".- DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<" - Dirección: "<<(*it).getDireccion()<<" - Teléfono: "<<(*it).getTelefono()<<" - Curso más alto: "<<(*it).getCursoAlto()<<" - Grupo: "<<(*it).getGrupo()<<" - ¿Líder?: "<<Lider<<" - Nota: "<<(*it).getNota()<<endl;
+						
+					}
+		
+					cont++;
+				}
+			}
+		}
+		
+	//Ordenar por DNI
+	}else if(tipo==2){
+	
+		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
+		
+			dni_.push_back((*it).getDNI());
+		}
+		
+		sort(dni_.begin(), dni_.end());
+		
+		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
+		
+			dniaux_.push_back(0);
+		}
+		dniaux_.push_back(0);
+		
+		for(int i=0;i<dni_.size();i++){
+		
+			encontrado=false;
+			j=0;
+		
+			for(it=Alumnos_.begin();it!=Alumnos_.end() && encontrado==false;it++){
+			
+				j++;
+			
+				dni1=(*it).getDNI();
+      			dni2=dni_[i];
+      			
+      			if(!(dni1.compare(dni2)) && dniaux_[j]==0) {
+      			
+      				encontrado=true;
+      				
+      				dniaux_[j]=1;
+				
+					//Si el alumno a mostrar es líder saldrá de forma especial
+					if((*it).getLider()==true){
+			
+						Lider="SI";
+			
+						cout<<cont<<".- ~~~~~ DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<" - Dirección: "<<(*it).getDireccion()<<" - Teléfono: "<<(*it).getTelefono()<<" - Curso más alto: "<<(*it).getCursoAlto()<<" - Grupo: "<<(*it).getGrupo()<<" - ¿Líder?: "<<Lider<<" - Nota: "<<(*it).getNota()<<" ~~~~~"<<endl;
+				
+					}else{
+				
+						Lider="No";
+			
+						cout<<cont<<".- DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<" - Dirección: "<<(*it).getDireccion()<<" - Teléfono: "<<(*it).getTelefono()<<" - Curso más alto: "<<(*it).getCursoAlto()<<" - Grupo: "<<(*it).getGrupo()<<" - ¿Líder?: "<<Lider<<" - Nota: "<<(*it).getNota()<<endl;
+						
+					}
+		
+					cont++;
+				}
+			}
+		}
+		
+	//Ordenar por curso más alto
+	}else if(tipo==3){
+	
+		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
+		
+			cursos_.push_back((*it).getCursoAlto());
+		}
+		
+		sort(cursos_.begin(), cursos_.end());
+		
+		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
+		
+			cursosaux_.push_back(0);
+		}
+		cursosaux_.push_back(0);
+		
+		for(int i=0;i<cursos_.size();i++){
+		
+			encontrado=false;
+			j=0;
+		
+			for(it=Alumnos_.begin();it!=Alumnos_.end() && encontrado==false;it++){
+			
+				j++;
+			
+				curso1=(*it).getCursoAlto();
+      			curso2=cursos_[i];
+      			
+      			if(curso1==curso2 && cursosaux_[j]==0) {
+      			
+      				encontrado=true;
+      				
+      				cursosaux_[j]=1;
+				
+					//Si el alumno a mostrar es líder saldrá de forma especial
+					if((*it).getLider()==true){
+			
+						Lider="SI";
+			
+						cout<<cont<<".- ~~~~~ DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<" - Dirección: "<<(*it).getDireccion()<<" - Teléfono: "<<(*it).getTelefono()<<" - Curso más alto: "<<(*it).getCursoAlto()<<" - Grupo: "<<(*it).getGrupo()<<" - ¿Líder?: "<<Lider<<" - Nota: "<<(*it).getNota()<<" ~~~~~"<<endl;
+				
+					}else{
+				
+						Lider="No";
+			
+						cout<<cont<<".- DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<" - Dirección: "<<(*it).getDireccion()<<" - Teléfono: "<<(*it).getTelefono()<<" - Curso más alto: "<<(*it).getCursoAlto()<<" - Grupo: "<<(*it).getGrupo()<<" - ¿Líder?: "<<Lider<<" - Nota: "<<(*it).getNota()<<endl;
+						
+					}
+		
+					cont++;
+				}
+			}
+		}
+	
+	//Ordenar por número de grupo
+	}else if(tipo==4){
+	
+		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
+		
+			grupos_.push_back((*it).getGrupo());
+		}
+		
+		sort(grupos_.begin(), grupos_.end());
+		
+		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
+		
+			gruposaux_.push_back(0);
+		}
+		gruposaux_.push_back(0);
+		
+		for(int i=0;i<grupos_.size();i++){
+		
+			encontrado=false;
+			j=0;
+		
+			for(it=Alumnos_.begin();it!=Alumnos_.end() && encontrado==false;it++){
+			
+				j++;
+			
+				grupo1=(*it).getGrupo();
+      			grupo2=grupos_[i];
+      			
+      			if(grupo1==grupo2 && gruposaux_[j]==0) {
+      			
+      				encontrado=true;
+      				
+      				gruposaux_[j]=1;
+				
+					//Si el alumno a mostrar es líder saldrá de forma especial
+					if((*it).getLider()==true){
+			
+						Lider="SI";
+			
+						cout<<cont<<".- ~~~~~ DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<" - Dirección: "<<(*it).getDireccion()<<" - Teléfono: "<<(*it).getTelefono()<<" - Curso más alto: "<<(*it).getCursoAlto()<<" - Grupo: "<<(*it).getGrupo()<<" - ¿Líder?: "<<Lider<<" - Nota: "<<(*it).getNota()<<" ~~~~~"<<endl;
+				
+					}else{
+				
+						Lider="No";
+			
+						cout<<cont<<".- DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<" - Dirección: "<<(*it).getDireccion()<<" - Teléfono: "<<(*it).getTelefono()<<" - Curso más alto: "<<(*it).getCursoAlto()<<" - Grupo: "<<(*it).getGrupo()<<" - ¿Líder?: "<<Lider<<" - Nota: "<<(*it).getNota()<<endl;
+						
+					}
+		
+					cont++;
+				}
+			}
+		}
 	}
 	
 	//Para generar un fichero HTML con los alumnos
@@ -477,7 +730,7 @@ void Agenda::MostrarTodos(){
 			
 				Lider="SI";
 				
-				fichero << "<lu><li><span style='font-weight: bold;color:blue'>" <<cont<<".- DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<" - Direccion: "<<(*it).getDireccion()<<" - Telefono: "<<(*it).getTelefono()<<" - Curso mas alto: "<<(*it).getCursoAlto()<<" - Grupo: "<<(*it).getGrupo()<<" - Lider: "<<Lider<<" - Nota: "<<(*it).getNota() << "</span></li></lu>"<<endl;
+				fichero << "<lu><li><span style='font-weight:bold;color:green'>" <<cont<<".- DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<" - Direccion: "<<(*it).getDireccion()<<" - Telefono: "<<(*it).getTelefono()<<" - Curso mas alto: "<<(*it).getCursoAlto()<<" - Grupo: "<<(*it).getGrupo()<<" - Lider: "<<Lider<<" - Nota: "<<(*it).getNota() << "</span></li></lu>"<<endl;
 				
 			}else{
 				
@@ -489,6 +742,8 @@ void Agenda::MostrarTodos(){
 		
 			cont++;
 		}
+		
+		//system(nombreFichero);
 	
 	}else if(resp=="N" || resp=="n"){
 	

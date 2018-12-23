@@ -1,10 +1,15 @@
 #ifndef AGENDA_H
 #define AGENDA_H
 
+#include <algorithm>
 #include <iostream>
 #include <cstdlib>
 #include <list>
 #include <fstream>
+#include <cstring>
+#include <stdio.h>
+#include <string>
+#include <vector>
 #include "Alumno.h"
 
 using namespace std;
@@ -27,7 +32,7 @@ class Agenda {
 		void EliminarAlumno(string DNI);
 		void EliminarTodos();
 		void MostrarAlumno(string DNI);
-		void MostrarTodos();
+		void MostrarTodos(int tipo);
 		int MostrarGrupo(int Grupo);
 };
 
