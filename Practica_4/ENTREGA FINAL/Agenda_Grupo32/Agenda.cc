@@ -432,13 +432,14 @@ void Agenda::MostrarTodos(){
 	list<Alumno>::iterator it;
 	string Lider, resp;
 	int cont=1;
+	ofstream fichero;
 	
 	for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
 		//Si el alumno a mostrar es líder saldrá de forma especial
 		if((*it).getLider()==true){
 			
-			Lider="SÍ";
+			Lider="SI";
 			
 			cout<<cont<<".- ~~~~~ DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<
 			" - Dirección: "<<(*it).getDireccion()<<" - Teléfono: "<<(*it).getTelefono()<<" - Curso más alto: "<<(*it).getCursoAlto()<<
@@ -455,6 +456,42 @@ void Agenda::MostrarTodos(){
 		
 		cont++;
 	}
+	
+	cout<<"¿Desea generar una página web con los alumnos? (S/N)"<<endl;
+	cin>>resp;
+	
+	if(resp=="S" || resp=="s"){
+	
+		fichero.open ("Lista.html");
+    	fichero << "<!DOCTYPE html><html><head></head><body>"; //starting html
+	
+		cont=1;
+	
+		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
+		
+		if((*it).getLider()==true){
+			
+			Lider="SI";
+				
+			fichero << "<lu><li><span style='font-weight: bold;color:blue'>" <<cont<<".- DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<" - Direccion: "<<(*it).getDireccion()<<" - Telefono: "<<(*it).getTelefono()<<" - Curso mas alto: "<<(*it).getCursoAlto()<<" - Grupo: "<<(*it).getGrupo()<<" - Lider: "<<Lider<<" - Nota: "<<(*it).getNota() << "</span></li></lu>"<<endl;
+				
+		}else{
+				
+			Lider="No";
+				
+			fichero << "<lu><li><span style='font-weight: bold'>" <<cont<<".- DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<" - Direccion: "<<(*it).getDireccion()<<" - Telefono: "<<(*it).getTelefono()<<" - Curso mas alto: "<<(*it).getCursoAlto()<<" - Grupo: "<<(*it).getGrupo()<<" - Lider: "<<Lider<<" - Nota: "<<(*it).getNota() << "</span></li></lu>"<<endl;
+		}
+		
+		cont++;
+	}
+	
+	}else if(resp=="N" || resp=="n"){
+	
+	}
+
+   //ending html
+    fichero << "</body></html>";
+    fichero.close();
 }
 
 //Función para mostrar los alumnos de un grupo, devolverá el número de alumnos que hay en ese grupo

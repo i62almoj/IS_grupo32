@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <list>
+#include <fstream>
 #include "Alumno.h"
 
 using namespace std;
