@@ -88,11 +88,11 @@ void Agenda::AnadirAlumno(){
 			
 			a.setDNI(DNI);
 			cout<<"Introduzca el nombre del alumno: ";
-			cin>>Nombre;
+			cin.ignore();
+			getline(cin, Nombre);
 			a.setNombre(Nombre);
 			cout<<"Introduzca los apellidos del alumno: ";
-			cin.ignore();
-			getline(cin, Apellidos, '\n');
+			getline(cin, Apellidos);
 			a.setApellidos(Apellidos);
 			cout<<"Introduzca el email del alumno: ";
 			cin>>Email;
@@ -164,8 +164,10 @@ void Agenda::AnadirAlumno(){
 				a.setNota("");
 			}
 			
-			//Actualizamos el alumno modificado en la lista
+			//Añadimos el alumno a la lista
 			Alumnos_.push_back(a);
+			
+			cout<<"\n\n¡AVISO! Le recomendamos que elija la opción del menú de guardar en la base de datos o en una copia de seguridad para no perder los nuevos datos por equivocación\n"<<endl;
 			
 		}else{
 			
@@ -200,10 +202,10 @@ void Agenda::ModificarAlumno(string DNI){
 			cin>>DNInuevo;
 			(*it).setDNI(DNInuevo);
 			cout<<"Introduzca el nuevo nombre del alumno: ";
-			cin>>Nombre;
+			cin.ignore();
+			getline(cin, Nombre);
 			(*it).setNombre(Nombre);
 			cout<<"Introduzca los nuevos apellidos del alumno: ";
-			cin.ignore();
 			getline(cin, Apellidos, '\n');
 			(*it).setApellidos(Apellidos);
 			cout<<"Introduzca el nuevo email del alumno: ";
@@ -326,6 +328,8 @@ void Agenda::ModificarAlumno(string DNI){
 		
 		it++;
 	}
+	
+	cout<<"\n\n¡AVISO! Le recomendamos que elija la opción del menú de guardar en la base de datos o en una copia de seguridad para no perder los nuevos datos por equivocación\n"<<endl;
 }
 
 //Función para eliminar un alumno
@@ -384,6 +388,8 @@ void Agenda::EliminarAlumno(string DNI){
 	
 		it++;
 	}
+	
+	cout<<"\n\n¡AVISO! Le recomendamos que elija la opción del menú de guardar en la base de datos o en una copia de seguridad para no perder los nuevos datos por equivocación\n"<<endl;
 }
 
 //Función para eliminar todos los alumnos
@@ -406,6 +412,8 @@ void Agenda::EliminarTodos(){
 		
 		cout<<"Opción incorrecta, debe introducir 'S' ó 'N'"<<endl;
 	}
+	
+	cout<<"\n\n¡AVISO! Deberá elegir la opción en el menú de guardar en una copia de seguridad o en la base de datos.\n"<<endl;
 }
 
 //Función para mostrar un alumno
