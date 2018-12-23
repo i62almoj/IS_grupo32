@@ -457,40 +457,46 @@ void Agenda::MostrarTodos(){
 		cont++;
 	}
 	
+	//Para generar un fichero HTML con los alumnos
 	cout<<"¿Desea generar una página web con los alumnos? (S/N)"<<endl;
 	cin>>resp;
 	
 	if(resp=="S" || resp=="s"){
 	
+		//Abrimos el fichero del HTML
 		fichero.open ("Lista.html");
-    	fichero << "<!DOCTYPE html><html><head></head><body>"; //starting html
+		//Comienzo del HTML
+    	fichero << "<!DOCTYPE html><html><head></head><body>";
 	
 		cont=1;
 	
 		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
-		if((*it).getLider()==true){
+			//Si el alumno a mostrar es líder saldrá de forma especial
+			if((*it).getLider()==true){
 			
-			Lider="SI";
+				Lider="SI";
 				
-			fichero << "<lu><li><span style='font-weight: bold;color:blue'>" <<cont<<".- DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<" - Direccion: "<<(*it).getDireccion()<<" - Telefono: "<<(*it).getTelefono()<<" - Curso mas alto: "<<(*it).getCursoAlto()<<" - Grupo: "<<(*it).getGrupo()<<" - Lider: "<<Lider<<" - Nota: "<<(*it).getNota() << "</span></li></lu>"<<endl;
+				fichero << "<lu><li><span style='font-weight: bold;color:blue'>" <<cont<<".- DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<" - Direccion: "<<(*it).getDireccion()<<" - Telefono: "<<(*it).getTelefono()<<" - Curso mas alto: "<<(*it).getCursoAlto()<<" - Grupo: "<<(*it).getGrupo()<<" - Lider: "<<Lider<<" - Nota: "<<(*it).getNota() << "</span></li></lu>"<<endl;
 				
-		}else{
+			}else{
 				
-			Lider="No";
+				Lider="No";
 				
-			fichero << "<lu><li><span style='font-weight: bold'>" <<cont<<".- DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<" - Direccion: "<<(*it).getDireccion()<<" - Telefono: "<<(*it).getTelefono()<<" - Curso mas alto: "<<(*it).getCursoAlto()<<" - Grupo: "<<(*it).getGrupo()<<" - Lider: "<<Lider<<" - Nota: "<<(*it).getNota() << "</span></li></lu>"<<endl;
-		}
+				fichero << "<lu><li><span style='font-weight: bold'>" <<cont<<".- DNI: "<<(*it).getDNI()<<" - Nombre: "<<(*it).getNombre()<<" - Apellidos: "<<(*it).getApellidos()<<" - Email: "<<(*it).getEmail()<<" - Direccion: "<<(*it).getDireccion()<<" - Telefono: "<<(*it).getTelefono()<<" - Curso mas alto: "<<(*it).getCursoAlto()<<" - Grupo: "<<(*it).getGrupo()<<" - Lider: "<<Lider<<" - Nota: "<<(*it).getNota() << "</span></li></lu>"<<endl;
+				
+			}
 		
-		cont++;
-	}
+			cont++;
+		}
 	
 	}else if(resp=="N" || resp=="n"){
 	
 	}
 
-   //ending html
+    //Final del HTML
     fichero << "</body></html>";
+    //Cerramos el fichero
     fichero.close();
 }
 
