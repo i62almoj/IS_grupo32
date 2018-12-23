@@ -14,8 +14,10 @@ class Agenda {
 
 	public:
 		
+		//Lista de alumnos
 		list<Alumno> Alumnos_;
 		
+		//Todas las funciones que tiene la agenda para trabajar con los alumnos
 		bool BuscarAlumno(string DNI);
 		int BuscarAlumnoAp(string Apellidos);
 		bool BuscarAlumnoEm(string Email);

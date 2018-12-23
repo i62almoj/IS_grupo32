@@ -18,14 +18,18 @@ class Profesor{
 		
 		string ID_, Password_;
 		int Rol_;
+		//Puntero a la agenda para poder trabajar con ella
 		Agenda *Ptr_Agenda_;
 
 	public:
 
+		//Lista de los profesores
 		list<Profesor> Profesores_;
 		
+		//Funciones de cargar y guardar copia de seguridad, que solo hará el coordinador
 		void CargarCopia(Agenda *Ptr_Agenda_);
 		void GuardarCopia(Agenda *Ptr_Agenda_);
+		//Funciones de cargar y guardar base de datos, que podrá realizar cualquier profesor
 		void CargarBD(Agenda *Ptr_Agenda_);
 		void GuardarBD(Agenda *Ptr_Agenda_);
 

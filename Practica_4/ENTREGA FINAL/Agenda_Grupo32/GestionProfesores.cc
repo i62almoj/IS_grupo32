@@ -9,11 +9,12 @@
 
 using namespace std;
 
+//Funciones para el manejo de profesores
 bool BuscarProfesor(char ID[10], Profesor *Ptr_Profesores_);
 void AnadirProfesor(Profesor *Ptr_Profesores_);
 void MostrarTodos(Profesor *Ptr_Profesores_);
-void GuardarFichero(Profesor *Ptr_Profesores_);
 
+//Estructura de profesor para poder trabajar con ellos correctamente
 typedef struct profesor{
 	
 	char ID[10], Password[20];
@@ -21,14 +22,14 @@ typedef struct profesor{
 	
 }profe;
 
+//Menú de la gestión de profesores
 int main(){
 
 	int opcion;
 	char ID[10], Password[20];
 	Profesor p;
 	
-	//p.Profesores_.clear();
-	
+	//Se lanza el menú
 	while(true){
 
 		cout << "\n\n";
@@ -50,12 +51,17 @@ int main(){
 
         switch(opcion){
 
+			//Añadir un profesor
         	case 1: 
          		AnadirProfesor(&p);
          		break;
+         		
+         	//Mostrar todos los profesores existentes
 	        case 2: 
 	         	MostrarTodos(&p);
 	         	break;
+	         	
+	        //Salir del programa
 		    case 3: 
 		        exit(-1);
 		        break;
@@ -63,6 +69,7 @@ int main(){
 	}
 }
 
+//Función para buscar un profesor a través de su ID
 bool BuscarProfesor(char ID[10], Profesor *Ptr_Profesores_){
 	
 	list<Profesor>::iterator it;
@@ -78,6 +85,7 @@ bool BuscarProfesor(char ID[10], Profesor *Ptr_Profesores_){
 	return false;
 }
 
+//Función para añadir un profesor
 void AnadirProfesor(Profesor *Ptr_Profesores_){
 	
 	char ID[10], Password[20];
@@ -86,11 +94,11 @@ void AnadirProfesor(Profesor *Ptr_Profesores_){
 	ofstream fichero;
 	list<Profesor>::iterator it;
 	profe pro;
-	//ifstream fichero2;
 
 	cout<<"Introduzca el ID del nuevo profesor: ";
 	cin>>ID;
 	
+	//Comprobamos que no exista ya el profesor
 	if(BuscarProfesor(ID, Ptr_Profesores_)==false){
 		
 		p.setID(ID);
@@ -101,6 +109,7 @@ void AnadirProfesor(Profesor *Ptr_Profesores_){
 		cin>>Rol;
 		p.setRol(Rol);
 		
+		//Se guarda el profesor en la lista
 		Ptr_Profesores_->Profesores_.push_back(p);
 		
 	}else{
@@ -108,23 +117,27 @@ void AnadirProfesor(Profesor *Ptr_Profesores_){
 		cout<<"ERROR: Ya existe un profesor con ese ID."<<endl;
 	}
 	
+	//Se escribirá el nuevo profesor en el fichero de profesores
 	if(!Ptr_Profesores_->Profesores_.empty()){
 		
+		//Se abre el fichero binario para escritura
 		fichero.open("Profesores.bin", ios::out | ios::binary);
 	
+		//Si el fichero se ha abierto correctamente
 		if(fichero.is_open()){
-			
-			//MostrarTodos(Ptr_Profesores_);
 		
+			//Se va recorriendo la lista
 			for(it=Ptr_Profesores_->Profesores_.begin();it!=Ptr_Profesores_->Profesores_.end();it++){
 				
 				strcpy(pro.ID,(*it).getID().c_str());
 				strcpy(pro.Password,(*it).getPassword().c_str());
 				pro.Rol=((*it).getRol());
 				
+				//Se va escribiendo cada profesor en el fichero
 				fichero.write((const char *)&pro, sizeof(pro));
 			}
 		
+			//Cerramos el fichero
 			fichero.close();
 		}
 		
@@ -134,6 +147,7 @@ void AnadirProfesor(Profesor *Ptr_Profesores_){
 	}
 }
 
+//Función para mostrar todos los profesores existentes
 void MostrarTodos(Profesor *Ptr_Profesores_){
 
 	list<Profesor>::iterator it;
@@ -145,27 +159,35 @@ void MostrarTodos(Profesor *Ptr_Profesores_){
 	
 	nombreFichero="Profesores.bin";
 	
+	//Se abre el fichero binario para lectura
 	fichero.open(nombreFichero.c_str(), ios::in | ios::binary);
 	
+	//Si el fichero se ha abierto correctamente
 	if(fichero.is_open()){
 		
+		//Comprobamos que el fichero no esté vacío calculando el número de bytes
 		fichero.seekg(0, ios::end);
 		
 		if(fichero.tellg()/sizeof(pro)!=0){
 			
+			//Volvemos a colocarnos al inicio del fichero
 			fichero.seekg((0)*sizeof(pro), ios::beg);
 			
+			//Limpiamos la lista para que no se dupliquen los profesores
 			Ptr_Profesores_->Profesores_.clear();
 			
+			//Vamos recorriendo el fichero
 			while(!fichero.eof() && fichero.read((char *)&pro, sizeof(pro))){
 				
 				p.setID(pro.ID);
 				p.setPassword(pro.Password);
 				p.setRol(pro.Rol);
 				
+				//Se guarda en la lista cada profesor leído
 				Ptr_Profesores_->Profesores_.push_back(p);
 			}
 		
+			//Cerramos el fichero
 			fichero.close();
 			
 		}else{
@@ -174,6 +196,7 @@ void MostrarTodos(Profesor *Ptr_Profesores_){
 		}
 	}
 	
+	//Mostramos los profesores
 	for(it=Ptr_Profesores_->Profesores_.begin();it!=Ptr_Profesores_->Profesores_.end();it++){
 			
 		cout<<cont<<".- ID: "<<(*it).getID()<<" - Contraseña: "<<(*it).getPassword()<<" - Rol: "<<(*it).getRol()<<endl;
