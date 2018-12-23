@@ -442,17 +442,20 @@ void Agenda::MostrarTodos(int tipo1, int tipo2){
 	//Ordenar por nombre
 	if(tipo1==0){
 	
+		//Vector con los nombres de los alumnos
 		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
 			nombres_.push_back((*it).getNombre());
 		}
 		
+		//Ordenamos el vector
 		sort(nombres_.begin(), nombres_.end());
 		
 		//Descendente
 		if(tipo2==1)
 			reverse(nombres_.begin(), nombres_.end());
 		
+		//Con este vector comprobaremos si ya se ha mostrado por pantalla el alumno o no, 0->no 1->sí
 		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
 			nombresaux_.push_back(0);
@@ -471,10 +474,12 @@ void Agenda::MostrarTodos(int tipo1, int tipo2){
 				nombre1=(*it).getNombre();
       			nombre2=nombres_[i];
       			
+      			//Se irán comparando los nombres del vector con los de nuestra lista de alumnos y se irán mostrando en orden, además de comprobar que ese alumno no haya sido mostrado anteriormente
       			if(!(nombre1.compare(nombre2)) && nombresaux_[j]==0) {
       			
       				encontrado=true;
       				
+      				//Como ya lo mostramos le ponemos un 1 para que no se vuelva a mostrar
       				nombresaux_[j]=1;
 				
 					//Si el alumno a mostrar es líder saldrá de forma especial
@@ -500,17 +505,20 @@ void Agenda::MostrarTodos(int tipo1, int tipo2){
 	//Ordenar por apellidos
 	}else if(tipo1==1){
 	
+		//Vector con los apellidos de los alumnos
 		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
 			apellidos_.push_back((*it).getApellidos());
 		}
 		
+		//Ordenamos el vector
 		sort(apellidos_.begin(), apellidos_.end());
 		
 		//Descendente
 		if(tipo2==1)
 			reverse(apellidos_.begin(), apellidos_.end());
 		
+		//Con este vector comprobaremos si ya se ha mostrado por pantalla el alumno o no, 0->no 1->sí
 		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
 			apellidosaux_.push_back(0);
@@ -529,10 +537,12 @@ void Agenda::MostrarTodos(int tipo1, int tipo2){
 				apellido1=(*it).getApellidos();
       			apellido2=apellidos_[i];
       			
+      			//Se irán comparando los apellidos del vector con los de nuestra lista de alumnos y se irán mostrando en orden, además de comprobar que ese alumno no haya sido mostrado anteriormente
       			if(!(apellido1.compare(apellido2)) && apellidosaux_[j]==0) {
       			
       				encontrado=true;
       				
+      				//Como ya lo mostramos le ponemos un 1 para que no se vuelva a mostrar
       				apellidosaux_[j]=1;
 				
 					//Si el alumno a mostrar es líder saldrá de forma especial
@@ -558,17 +568,20 @@ void Agenda::MostrarTodos(int tipo1, int tipo2){
 	//Ordenar por DNI
 	}else if(tipo1==2){
 	
+		//Vector con los DNIs de los alumnos
 		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
 			dni_.push_back((*it).getDNI());
 		}
 		
+		//Ordenamos el vector
 		sort(dni_.begin(), dni_.end());
 		
 		//Descendente
 		if(tipo2==1)
 			reverse(dni_.begin(), dni_.end());
 		
+		//Con este vector comprobaremos si ya se ha mostrado por pantalla el alumno o no, 0->no 1->sí
 		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
 			dniaux_.push_back(0);
@@ -587,10 +600,12 @@ void Agenda::MostrarTodos(int tipo1, int tipo2){
 				dni1=(*it).getDNI();
       			dni2=dni_[i];
       			
+      			//Se irán comparando los DNIs del vector con los de nuestra lista de alumnos y se irán mostrando en orden, además de comprobar que ese alumno no haya sido mostrado anteriormente
       			if(!(dni1.compare(dni2)) && dniaux_[j]==0) {
       			
       				encontrado=true;
       				
+      				//Como ya lo mostramos le ponemos un 1 para que no se vuelva a mostrar
       				dniaux_[j]=1;
 				
 					//Si el alumno a mostrar es líder saldrá de forma especial
@@ -616,17 +631,20 @@ void Agenda::MostrarTodos(int tipo1, int tipo2){
 	//Ordenar por curso más alto
 	}else if(tipo1==3){
 	
+		//Vector con los cursos de los alumnos
 		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
 			cursos_.push_back((*it).getCursoAlto());
 		}
 		
+		//Ordenamos el vector
 		sort(cursos_.begin(), cursos_.end());
 		
 		//Descendente
 		if(tipo2==1)
 			reverse(cursos_.begin(), cursos_.end());
 		
+		//Con este vector comprobaremos si ya se ha mostrado por pantalla el alumno o no, 0->no 1->sí
 		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
 			cursosaux_.push_back(0);
@@ -645,10 +663,12 @@ void Agenda::MostrarTodos(int tipo1, int tipo2){
 				curso1=(*it).getCursoAlto();
       			curso2=cursos_[i];
       			
+      			//Se irán comparando los cursos del vector con los de nuestra lista de alumnos y se irán mostrando en orden, además de comprobar que ese alumno no haya sido mostrado anteriormente
       			if(curso1==curso2 && cursosaux_[j]==0) {
       			
       				encontrado=true;
       				
+      				//Como ya lo mostramos le ponemos un 1 para que no se vuelva a mostrar
       				cursosaux_[j]=1;
 				
 					//Si el alumno a mostrar es líder saldrá de forma especial
@@ -674,17 +694,20 @@ void Agenda::MostrarTodos(int tipo1, int tipo2){
 	//Ordenar por número de grupo
 	}else if(tipo1==4){
 	
+		//Vector con los grupos de los alumnos
 		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
 			grupos_.push_back((*it).getGrupo());
 		}
 		
+		//Ordenamos el vector
 		sort(grupos_.begin(), grupos_.end());
 		
 		//Descendente
 		if(tipo2==1)
 			reverse(grupos_.begin(), grupos_.end());
 		
+		//Con este vector comprobaremos si ya se ha mostrado por pantalla el alumno o no, 0->no 1->sí
 		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
 			gruposaux_.push_back(0);
@@ -703,10 +726,12 @@ void Agenda::MostrarTodos(int tipo1, int tipo2){
 				grupo1=(*it).getGrupo();
       			grupo2=grupos_[i];
       			
+      			//Se irán comparando los grupos del vector con los de nuestra lista de alumnos y se irán mostrando en orden, además de comprobar que ese alumno no haya sido mostrado anteriormente
       			if(grupo1==grupo2 && gruposaux_[j]==0) {
       			
       				encontrado=true;
       				
+      				//Como ya lo mostramos le ponemos un 1 para que no se vuelva a mostrar
       				gruposaux_[j]=1;
 				
 					//Si el alumno a mostrar es líder saldrá de forma especial

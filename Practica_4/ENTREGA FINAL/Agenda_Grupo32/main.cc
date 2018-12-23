@@ -310,9 +310,11 @@ int main(){
 								//Si desea mostrar todos los alumnos
 								if(resp==0){
 								
+									//Para el tipo de ordenación
 									cout<<"¿Cómo desea ordenar los alumnos?\nPor nombre(0)\nPor apellido(1)\nPor DNI(2)\nPor curso más alto(3)\nPor grupo(4)\n"<<endl;
 									cin>>orden1;
 									
+									//Para ordenar ascendente o descendente
 									cout<<"¿Y desea ordenarlos de forma ascendente(0) o descendente(1)?"<<endl;
 									cin>>orden2;
 				
