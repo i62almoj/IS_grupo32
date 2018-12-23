@@ -427,7 +427,7 @@ void Agenda::MostrarAlumno(string DNI){
 }
 
 //Función para mostrar todos los alumnos
-void Agenda::MostrarTodos(int tipo){
+void Agenda::MostrarTodos(int tipo1, int tipo2){
 
 	list<Alumno>::iterator it;
 	string Lider, resp;
@@ -440,7 +440,7 @@ void Agenda::MostrarTodos(int tipo){
 	//char nombreFichero[20]="firefox Lista.html";
 	
 	//Ordenar por nombre
-	if(tipo==0){
+	if(tipo1==0){
 	
 		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
@@ -448,6 +448,10 @@ void Agenda::MostrarTodos(int tipo){
 		}
 		
 		sort(nombres_.begin(), nombres_.end());
+		
+		//Descendente
+		if(tipo2==1)
+			reverse(nombres_.begin(), nombres_.end());
 		
 		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
@@ -494,7 +498,7 @@ void Agenda::MostrarTodos(int tipo){
 		}
 		
 	//Ordenar por apellidos
-	}else if(tipo==1){
+	}else if(tipo1==1){
 	
 		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
@@ -502,6 +506,10 @@ void Agenda::MostrarTodos(int tipo){
 		}
 		
 		sort(apellidos_.begin(), apellidos_.end());
+		
+		//Descendente
+		if(tipo2==1)
+			reverse(apellidos_.begin(), apellidos_.end());
 		
 		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
@@ -548,7 +556,7 @@ void Agenda::MostrarTodos(int tipo){
 		}
 		
 	//Ordenar por DNI
-	}else if(tipo==2){
+	}else if(tipo1==2){
 	
 		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
@@ -556,6 +564,10 @@ void Agenda::MostrarTodos(int tipo){
 		}
 		
 		sort(dni_.begin(), dni_.end());
+		
+		//Descendente
+		if(tipo2==1)
+			reverse(dni_.begin(), dni_.end());
 		
 		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
@@ -602,7 +614,7 @@ void Agenda::MostrarTodos(int tipo){
 		}
 		
 	//Ordenar por curso más alto
-	}else if(tipo==3){
+	}else if(tipo1==3){
 	
 		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
@@ -610,6 +622,10 @@ void Agenda::MostrarTodos(int tipo){
 		}
 		
 		sort(cursos_.begin(), cursos_.end());
+		
+		//Descendente
+		if(tipo2==1)
+			reverse(cursos_.begin(), cursos_.end());
 		
 		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
@@ -656,7 +672,7 @@ void Agenda::MostrarTodos(int tipo){
 		}
 	
 	//Ordenar por número de grupo
-	}else if(tipo==4){
+	}else if(tipo1==4){
 	
 		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		
@@ -664,6 +680,10 @@ void Agenda::MostrarTodos(int tipo){
 		}
 		
 		sort(grupos_.begin(), grupos_.end());
+		
+		//Descendente
+		if(tipo2==1)
+			reverse(grupos_.begin(), grupos_.end());
 		
 		for(it=Alumnos_.begin();it!=Alumnos_.end();it++){
 		

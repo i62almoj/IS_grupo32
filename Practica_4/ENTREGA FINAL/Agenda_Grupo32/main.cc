@@ -23,7 +23,7 @@ typedef struct profesor{
 
 int main(){
 
-	int opcion, resp, cont, Grupo, orden;
+	int opcion, resp, cont, Grupo, orden1, orden2;
 	char DNI[20], Apellidos[50], Email[25], ID[10], Password[20];
 	Agenda agenda;
 	list<Alumno>::iterator it;
@@ -311,9 +311,12 @@ int main(){
 								if(resp==0){
 								
 									cout<<"¿Cómo desea ordenar los alumnos?\nPor nombre(0)\nPor apellido(1)\nPor DNI(2)\nPor curso más alto(3)\nPor grupo(4)\n"<<endl;
-									cin>>orden;
+									cin>>orden1;
+									
+									cout<<"¿Y desea ordenarlos de forma ascendente(0) o descendente(1)?"<<endl;
+									cin>>orden2;
 				
-									agenda.MostrarTodos(orden);
+									agenda.MostrarTodos(orden1, orden2);
 				
 								//Si desea mostrar solo un alumno
 								}else if(resp==1){

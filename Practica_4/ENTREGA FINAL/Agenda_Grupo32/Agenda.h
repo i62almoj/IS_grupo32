@@ -32,7 +32,7 @@ class Agenda {
 		void EliminarAlumno(string DNI);
 		void EliminarTodos();
 		void MostrarAlumno(string DNI);
-		void MostrarTodos(int tipo);
+		void MostrarTodos(int tipo1, int tipo2);
 		int MostrarGrupo(int Grupo);
 };
 
